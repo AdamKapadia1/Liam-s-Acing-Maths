@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liam's Acing Maths — GCSE Higher Revision</title>
+  <meta name="color-scheme" content="dark">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">Liam's Acing <span>Maths</span></div>
+  <div class="header-badge">AQA GCSE HIGHER · GRADE 4–5</div>
+</header>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Topics</div>
+
+      <button class="topic-btn active" onclick="showHome()" id="home-btn">
+        <span class="icon">🏠</span> Home
+      </button>
+
+      <button class="topic-btn" onclick="toggleSub('num')" id="topic-num">
+        <span class="icon">🔢</span> Number
+      </button>
+      <div class="subtopics" id="sub-num">
+        <button class="subtopic-btn" onclick="loadTopic('number','Integers & Decimals')">Integers &amp; Decimals <span class="progress-dot" id="dot-Integers & Decimals"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('number','Fractions')">Fractions <span class="progress-dot" id="dot-Fractions"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('number','Percentages')">Percentages <span class="progress-dot" id="dot-Percentages"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('number','Powers & Roots')">Powers &amp; Roots <span class="progress-dot" id="dot-Powers & Roots"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('number','Standard Form')">Standard Form <span class="progress-dot" id="dot-Standard Form"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('number','Factors, Multiples & Primes')">Factors &amp; Primes <span class="progress-dot" id="dot-Factors, Multiples & Primes"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('number','Rounding & Bounds')">Rounding &amp; Bounds <span class="progress-dot" id="dot-Rounding & Bounds"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('number','Indices & Surds')">Indices &amp; Surds ★ <span class="progress-dot" id="dot-Indices & Surds"></span></button>
+      </div>
+
+      <button class="topic-btn" onclick="toggleSub('alg')" id="topic-alg">
+        <span class="icon">📐</span> Algebra
+      </button>
+      <div class="subtopics" id="sub-alg">
+        <button class="subtopic-btn" onclick="loadTopic('algebra','Simplifying & Expanding')">Simplifying &amp; Expanding <span class="progress-dot" id="dot-Simplifying & Expanding"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('algebra','Factorising')">Factorising <span class="progress-dot" id="dot-Factorising"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('algebra','Solving Linear Equations')">Solving Linear Equations <span class="progress-dot" id="dot-Solving Linear Equations"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('algebra','Straight-Line Graphs')">Straight-Line Graphs <span class="progress-dot" id="dot-Straight-Line Graphs"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('algebra','Quadratic Equations')">Quadratic Equations ★ <span class="progress-dot" id="dot-Quadratic Equations"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('algebra','Simultaneous Equations')">Simultaneous Equations ★ <span class="progress-dot" id="dot-Simultaneous Equations"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('algebra','Sequences')">Sequences <span class="progress-dot" id="dot-Sequences"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('algebra','Inequalities')">Inequalities <span class="progress-dot" id="dot-Inequalities"></span></button>
+      </div>
+
+      <button class="topic-btn" onclick="toggleSub('rat')" id="topic-rat">
+        <span class="icon">⚖️</span> Ratio &amp; Proportion
+      </button>
+      <div class="subtopics" id="sub-rat">
+        <button class="subtopic-btn" onclick="loadTopic('ratio','Ratio')">Ratio <span class="progress-dot" id="dot-Ratio"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('ratio','Direct & Inverse Proportion')">Proportion <span class="progress-dot" id="dot-Direct & Inverse Proportion"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('ratio','Speed, Distance & Time')">Speed, Distance &amp; Time <span class="progress-dot" id="dot-Speed, Distance & Time"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('ratio','Compound Interest & Growth')">Compound Interest ★ <span class="progress-dot" id="dot-Compound Interest & Growth"></span></button>
+      </div>
+
+      <button class="topic-btn" onclick="toggleSub('geo')" id="topic-geo">
+        <span class="icon">📏</span> Geometry &amp; Measures
+      </button>
+      <div class="subtopics" id="sub-geo">
+        <button class="subtopic-btn" onclick="loadTopic('geometry','Angle Rules')">Angle Rules <span class="progress-dot" id="dot-Angle Rules"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('geometry','Area & Perimeter')">Area &amp; Perimeter <span class="progress-dot" id="dot-Area & Perimeter"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('geometry','Circles')">Circles <span class="progress-dot" id="dot-Circles"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('geometry','Volume & Surface Area')">Volume &amp; Surface Area <span class="progress-dot" id="dot-Volume & Surface Area"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('geometry','Pythagoras Theorem')">Pythagoras' Theorem <span class="progress-dot" id="dot-Pythagoras Theorem"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('geometry','Trigonometry')">Trigonometry <span class="progress-dot" id="dot-Trigonometry"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('geometry','Transformations')">Transformations <span class="progress-dot" id="dot-Transformations"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('geometry','Similarity & Congruence')">Similarity &amp; Congruence <span class="progress-dot" id="dot-Similarity & Congruence"></span></button>
+      </div>
+
+      <button class="topic-btn" onclick="toggleSub('sta')" id="topic-sta">
+        <span class="icon">📊</span> Statistics &amp; Probability
+      </button>
+      <div class="subtopics" id="sub-sta">
+        <button class="subtopic-btn" onclick="loadTopic('stats','Averages & Range')">Averages &amp; Range <span class="progress-dot" id="dot-Averages & Range"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('stats','Charts & Graphs')">Charts &amp; Graphs <span class="progress-dot" id="dot-Charts & Graphs"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('stats','Scatter Graphs')">Scatter Graphs <span class="progress-dot" id="dot-Scatter Graphs"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('stats','Probability')">Probability <span class="progress-dot" id="dot-Probability"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('stats','Tree Diagrams')">Tree Diagrams <span class="progress-dot" id="dot-Tree Diagrams"></span></button>
+        <button class="subtopic-btn" onclick="loadTopic('stats','Cumulative Frequency & Box Plots')">Cumulative Frequency ★ <span class="progress-dot" id="dot-Cumulative Frequency & Box Plots"></span></button>
+      </div>
+
+      <hr class="section-divider">
+      <button class="topic-btn" onclick="showCheatsheet()">
+        <span class="icon">📋</span> Formula Sheet
+      </button>
+      <button class="topic-btn" onclick="showPastPapers()">
+        <span class="icon">📝</span> Past Papers
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- HOME SCREEN -->
+    <div class="home-screen" id="home-screen">
+      <div class="hero">
+        <div class="hero-eyebrow">AQA GCSE HIGHER MATHEMATICS</div>
+        <h1>Your Route to<br>Grade 4 or 5</h1>
+        <p>AQA-tailored lessons, worked examples, and exam-style questions — covering every topic on the Higher paper. Pick a topic from the sidebar or below to start.</p>
+      </div>
+
+      <div class="progress-section">
+        <div class="progress-label">Overall Progress</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="overall-bar" style="width:0%"></div>
+        </div>
+        <div class="progress-stats">
+          <div class="stat">
+            <div class="stat-num" id="stat-done">0</div>
+            <div class="stat-label">Topics Done</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" id="stat-total">30</div>
+            <div class="stat-label">Total Topics</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" id="stat-qs">0</div>
+            <div class="stat-label">Questions Answered</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-heading">Choose a Topic</div>
+
+      <div class="topic-grid">
+        <div class="topic-card" style="--card-accent:#f0c040" onclick="toggleSub('num');document.getElementById('topic-num').click()">
+          <div class="card-icon">🔢</div>
+          <div class="card-title">Number</div>
+          <div class="card-count">8 subtopics · Core &amp; Higher</div>
+        </div>
+        <div class="topic-card" style="--card-accent:#4fc3f7" onclick="toggleSub('alg');document.getElementById('topic-alg').click()">
+          <div class="card-icon">📐</div>
+          <div class="card-title">Algebra</div>
+          <div class="card-count">8 subtopics · Highest mark area</div>
+        </div>
+        <div class="topic-card" style="--card-accent:#ce93d8" onclick="toggleSub('rat');document.getElementById('topic-rat').click()">
+          <div class="card-icon">⚖️</div>
+          <div class="card-title">Ratio &amp; Proportion</div>
+          <div class="card-count">4 subtopics · Reliable marks</div>
+        </div>
+        <div class="topic-card" style="--card-accent:#80cbc4" onclick="toggleSub('geo');document.getElementById('topic-geo').click()">
+          <div class="card-icon">📏</div>
+          <div class="card-title">Geometry &amp; Measures</div>
+          <div class="card-count">8 subtopics · Visual problems</div>
+        </div>
+        <div class="topic-card" style="--card-accent:#f48fb1" onclick="toggleSub('sta');document.getElementById('topic-sta').click()">
+          <div class="card-icon">📊</div>
+          <div class="card-title">Statistics &amp; Probability</div>
+          <div class="card-count">6 subtopics · Accessible marks</div>
+        </div>
+        <div class="topic-card" style="--card-accent:#a5d6a7" onclick="showCheatsheet()">
+          <div class="card-icon">📋</div>
+          <div class="card-title">Formula Sheet</div>
+          <div class="card-count">Must-know formulae</div>
+        </div>
+      </div>
+
+      <div class="info-banner">
+        ★ = Higher-only topics. For a grade 4–5, focus first on topics without ★, then tackle ★ topics for extra marks.
+      </div>
+    </div>
+
+    <!-- CONTENT SCREEN -->
+    <div class="content-screen" id="content-screen">
+      <div class="content-header">
+        <button class="back-btn" onclick="showHome()">← Back</button>
+        <div class="content-title" id="content-title">Topic Name</div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('learn')">📖 Learn</button>
+        <button class="tab-btn" onclick="switchTab('questions')">✏️ Practice Questions</button>
+        <button class="tab-btn" onclick="switchTab('cheatsheet-inline')">📋 Key Formulae</button>
+      </div>
+
+      <!-- LEARN TAB -->
+      <div class="learn-panel active" id="tab-learn">
+
+        <!-- The GCSE Maths Tutor video -->
+        <div class="video-section" id="video-section" style="display:none">
+          <div class="video-meta">
+            <div class="video-label">The GCSE Maths Tutor</div>
+            <a class="video-yt-link" id="video-yt-link" href="#" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+          <div class="video-wrap">
+            <iframe id="video-iframe"
+              src=""
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              title="The GCSE Maths Tutor lesson video">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Written lesson -->
+        <div class="explain-card" id="explain-card">
+          <div class="loading-msg"><div class="spinner"></div> Loading lesson content…</div>
+        </div>
+        <div class="btn-row">
+          <button class="btn-secondary" onclick="switchTab('questions')">Practice Questions →</button>
+        </div>
+      </div>
+
+      <!-- QUESTIONS TAB -->
+      <div class="question-panel" id="tab-questions">
+        <div class="progress-section" style="margin-bottom:20px">
+          <div class="progress-label">Session Progress</div>
+          <div class="progress-stats" style="margin-top:0">
+            <div class="stat"><div class="stat-num" id="session-correct">0</div><div class="stat-label">Correct</div></div>
+            <div class="stat"><div class="stat-num" id="session-total">0</div><div class="stat-label">Attempted</div></div>
+          </div>
+        </div>
+        <div class="question-card" id="question-card">
+          <div class="loading-msg"><div class="spinner"></div> Generating question…</div>
+        </div>
+        <div class="btn-row" id="q-btn-row" style="display:none">
+          <button class="btn-primary" id="submit-btn" onclick="submitAnswer()">Submit Answer</button>
+          <button class="btn-secondary" onclick="newQuestion()">Skip →</button>
+        </div>
+        <div class="feedback-card" id="feedback-card">
+          <div class="feedback-header" id="feedback-header"></div>
+          <div class="feedback-body" id="feedback-body"></div>
+          <div class="btn-row" style="margin-top:14px">
+            <button class="btn-primary" onclick="newQuestion()">Next Question →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- INLINE FORMULA TAB -->
+      <div class="cheatsheet-panel" id="tab-cheatsheet-inline">
+        <div id="inline-formulas"></div>
+      </div>
+    </div>
+
+    <!-- PAST PAPERS SCREEN -->
+    <div class="content-screen" id="past-papers-screen">
+      <div class="content-header">
+        <button class="back-btn" onclick="showHome()">← Back</button>
+        <div class="content-title">AQA Past Papers</div>
+      </div>
+
+      <div class="pp-layout">
+
+        <!-- Left: paper list -->
+        <div class="pp-sidebar">
+          <div class="pp-year-group">
+            <div class="pp-year-label">2023</div>
+            <button class="pp-btn" onclick="openPaper(event,'2023','1')">Paper 1 · Non-calculator</button>
+            <button class="pp-btn" onclick="openPaper(event,'2023','2')">Paper 2 · Calculator</button>
+            <button class="pp-btn" onclick="openPaper(event,'2023','3')">Paper 3 · Calculator</button>
+          </div>
+          <div class="pp-year-group">
+            <div class="pp-year-label">2022</div>
+            <button class="pp-btn" onclick="openPaper(event,'2022','1')">Paper 1 · Non-calculator</button>
+            <button class="pp-btn" onclick="openPaper(event,'2022','2')">Paper 2 · Calculator</button>
+            <button class="pp-btn" onclick="openPaper(event,'2022','3')">Paper 3 · Calculator</button>
+          </div>
+          <div class="pp-year-group">
+            <div class="pp-year-label">2019</div>
+            <button class="pp-btn" onclick="openPaper(event,'2019','1')">Paper 1 · Non-calculator</button>
+            <button class="pp-btn" onclick="openPaper(event,'2019','2')">Paper 2 · Calculator</button>
+            <button class="pp-btn" onclick="openPaper(event,'2019','3')">Paper 3 · Calculator</button>
+          </div>
+          <div class="pp-year-group">
+            <div class="pp-year-label">2018</div>
+            <button class="pp-btn" onclick="openPaper(event,'2018','1')">Paper 1 · Non-calculator</button>
+            <button class="pp-btn" onclick="openPaper(event,'2018','2')">Paper 2 · Calculator</button>
+            <button class="pp-btn" onclick="openPaper(event,'2018','3')">Paper 3 · Calculator</button>
+          </div>
+          <div class="pp-year-group">
+            <div class="pp-year-label">2017</div>
+            <button class="pp-btn" onclick="openPaper(event,'2017','1')">Paper 1 · Non-calculator</button>
+            <button class="pp-btn" onclick="openPaper(event,'2017','2')">Paper 2 · Calculator</button>
+            <button class="pp-btn" onclick="openPaper(event,'2017','3')">Paper 3 · Calculator</button>
+          </div>
+        </div>
+
+        <!-- Right: viewer + controls -->
+        <div class="pp-viewer-area">
+
+          <!-- Active paper info + toggle -->
+          <div class="pp-controls" id="pp-controls" style="display:none">
+            <div class="pp-active-label" id="pp-active-label"></div>
+            <div class="pp-toggle">
+              <button class="tab-btn active" id="pp-qp-btn" onclick="switchPaperView('qp')">Question Paper</button>
+              <button class="tab-btn" id="pp-ms-btn" onclick="switchPaperView('ms')">Mark Scheme</button>
+            </div>
+            <div class="pp-no-ms" id="pp-no-ms" style="display:none">Mark scheme not available for this year</div>
+          </div>
+
+          <!-- Timer -->
+          <div class="pp-timer-bar" id="pp-timer-bar" style="display:none">
+            <div class="pp-timer" id="pp-timer">1:30:00</div>
+            <div class="pp-timer-btns">
+              <button class="btn-primary pp-timer-btn" id="pp-start-btn" onclick="ppTimerToggle()">Start Timer</button>
+              <button class="btn-secondary pp-timer-btn" onclick="ppTimerReset()">Reset</button>
+            </div>
+          </div>
+
+          <!-- PDF iframe -->
+          <div class="pp-placeholder" id="pp-placeholder">
+            <div style="font-size:3rem;margin-bottom:16px">📝</div>
+            <p style="color:var(--muted);font-size:0.95rem">Select a paper from the list to start practising</p>
+            <p style="color:var(--muted);font-size:0.82rem;margin-top:8px">Each paper is 1 hour 30 minutes · 80 marks</p>
+          </div>
+          <iframe id="pp-iframe" class="pp-iframe" src="" style="display:none" title="Past Paper PDF"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULA CHEAT SHEET FULL PAGE -->
+    <div class="content-screen" id="cheatsheet-screen">
+      <div class="content-header">
+        <button class="back-btn" onclick="showHome()">← Back</button>
+        <div class="content-title">Formula Sheet</div>
+      </div>
+      <p class="cheatsheet-intro">Key formulae for GCSE Higher. Items marked ⚠️ are <strong>not</strong> given in the exam — you must memorise them.</p>
+      <div class="formula-grid" id="formula-grid"></div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/videos.js"></script>
+<script src="js/lessons.js"></script>
+<script src="js/questionbank.js"></script>
+<script src="js/topics.js"></script>
+<script src="js/formulas.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
