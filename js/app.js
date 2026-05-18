@@ -372,7 +372,7 @@ async function generateLesson() {
   const bankedLesson = getLessonContent(state.subtopic);
   if (bankedLesson) {
     card.innerHTML = `<div class="ai-content">${bankedLesson}</div>`;
-    markTopicDone(state.subtopic);
+    showMarkCompleteBtn();
     return;
   }
 
@@ -404,10 +404,25 @@ Target: student aiming for grade 4–5. Reference AQA-style question phrasing wh
   try {
     const html = await callClaude(system, user);
     card.innerHTML = `<div class="ai-content">${html}</div>`;
-    markTopicDone(state.subtopic);
+    showMarkCompleteBtn();
   } catch (err) {
     card.innerHTML = errorHtml(err.message, 'generateLesson()');
   }
+}
+
+function showMarkCompleteBtn() {
+  const btn = document.getElementById('mark-complete-btn');
+  if (!btn) return;
+  const alreadyDone = state.completedTopics.has(state.subtopic);
+  btn.style.display  = 'inline-flex';
+  btn.textContent    = alreadyDone ? '✓ Completed' : 'Mark as Complete';
+  btn.disabled       = alreadyDone;
+  btn.className      = alreadyDone ? 'btn-complete btn-complete--done' : 'btn-complete';
+}
+
+function manualMarkComplete() {
+  markTopicDone(state.subtopic);
+  showMarkCompleteBtn();
 }
 
 // ── QUESTIONS ─────────────────────────────────────────────────────────────────
