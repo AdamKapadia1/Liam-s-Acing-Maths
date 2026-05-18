@@ -320,6 +320,37 @@
       </div>
     </div>
 
+    <!-- ── AI TUTOR CHAT (fixed overlay, shown when a paper is open) ────────── -->
+    <button class="tutor-fab" id="tutor-fab" onclick="tutorOpen()" style="display:none"
+            aria-label="Ask the Maths Tutor">
+      🤖 Ask Tutor
+    </button>
+
+    <div class="tutor-chat" id="tutor-chat" role="dialog" aria-label="Maths Tutor Chat">
+      <div class="tutor-chat-header">
+        <div class="tutor-chat-title">
+          <span class="tutor-chat-icon">🤖</span>
+          <div>
+            <div class="tutor-chat-name">Maths Tutor</div>
+            <div class="tutor-chat-sub" id="tutor-chat-sub">Select a paper to begin</div>
+          </div>
+        </div>
+        <button class="tutor-chat-close" onclick="tutorClose()" aria-label="Close tutor">✕</button>
+      </div>
+      <div class="tutor-chat-messages" id="tutor-chat-messages">
+        <div class="tutor-msg tutor-msg--ai">
+          Hi! Open any past paper, then describe a question you're stuck on and I'll walk you through the method step by step. You don't need to know the question number — just tell me what the question asks.
+        </div>
+      </div>
+      <div class="tutor-chat-footer">
+        <textarea class="tutor-chat-input" id="tutor-chat-input"
+          placeholder="e.g. 'The question asks me to find the area of a sector with radius 8cm and angle 120°…'"
+          rows="3"
+          onkeydown="tutorKeydown(event)"></textarea>
+        <button class="tutor-chat-send" id="tutor-chat-send" onclick="tutorSend()">Send</button>
+      </div>
+    </div>
+
     <!-- FORMULA CHEAT SHEET FULL PAGE -->
     <div class="content-screen" id="cheatsheet-screen">
       <div class="content-header">

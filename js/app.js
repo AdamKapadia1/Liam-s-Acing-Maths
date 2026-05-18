@@ -71,6 +71,11 @@ function openPaper(evt, year, paper) {
   document.getElementById('pp-controls').style.display  = 'flex';
   document.getElementById('pp-timer-bar').style.display = 'flex';
 
+  // Show tutor FAB and update its context label
+  document.getElementById('tutor-fab').style.display = 'flex';
+  document.getElementById('tutor-chat-sub').textContent =
+    `${year} Higher · ${paperLabel}`;
+
   switchPaperView('qp');
 }
 
@@ -131,6 +136,83 @@ function ppUpdateTimerDisplay() {
   el.textContent = `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
   el.className = 'pp-timer' +
     (ppState.timerSecs <= 300 ? ' warning' : ppState.timerSecs <= 900 ? ' caution' : '');
+}
+
+// ── PAST PAPER AI TUTOR ────────────────────────────────────────────────────────
+const tutorHistory = []; // {role, content}
+
+function tutorOpen() {
+  document.getElementById('tutor-chat').classList.add('open');
+  document.getElementById('tutor-fab').style.display = 'none';
+  document.getElementById('tutor-chat-input').focus();
+}
+
+function tutorClose() {
+  document.getElementById('tutor-chat').classList.remove('open');
+  document.getElementById('tutor-fab').style.display = 'flex';
+}
+
+function tutorKeydown(evt) {
+  if (evt.key === 'Enter' && !evt.shiftKey) {
+    evt.preventDefault();
+    tutorSend();
+  }
+}
+
+async function tutorSend() {
+  const input = document.getElementById('tutor-chat-input');
+  const text  = input.value.trim();
+  if (!text) return;
+
+  const { year, paper } = ppState;
+  const paperLabel = paper === '1' ? 'Paper 1 (Non-calculator)' : `Paper ${paper} (Calculator)`;
+
+  // Add user bubble
+  tutorAddBubble('user', text);
+  tutorHistory.push({ role: 'user', content: text });
+  input.value = '';
+
+  // Disable send while waiting
+  const sendBtn = document.getElementById('tutor-chat-send');
+  sendBtn.disabled    = true;
+  sendBtn.textContent = '…';
+
+  // Thinking bubble
+  const thinking = tutorAddBubble('ai', '…', true);
+
+  try {
+    const system = `You are a friendly, encouraging GCSE Maths tutor helping a student work through the AQA ${year} Higher ${paperLabel}.
+The student will describe a question they are stuck on. Your job is to:
+1. Identify the topic and method needed.
+2. Give a clear, numbered step-by-step method to solve it.
+3. Show a worked example using the numbers in their question.
+4. End with a short AQA exam tip.
+Keep your response concise and easy to follow. Never just give the final answer without showing the method. Use plain text — no markdown headings.`;
+
+    const reply = await callClaude(system,
+      tutorHistory.map(m => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content}`).join('\n\n')
+    );
+
+    thinking.remove();
+    tutorAddBubble('ai', reply);
+    tutorHistory.push({ role: 'assistant', content: reply });
+  } catch (err) {
+    thinking.remove();
+    tutorAddBubble('ai', `Sorry, I couldn't connect right now. Check your internet and try again. (${err.message})`);
+  }
+
+  sendBtn.disabled    = false;
+  sendBtn.textContent = 'Send';
+}
+
+function tutorAddBubble(role, text, isThinking = false) {
+  const messages = document.getElementById('tutor-chat-messages');
+  const div = document.createElement('div');
+  div.className = `tutor-msg tutor-msg--${role === 'user' ? 'user' : 'ai'}${isThinking ? ' tutor-msg--thinking' : ''}`;
+  div.textContent = text;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+  return div;
 }
 
 function toggleSub(id) {

@@ -652,7 +652,7 @@ main { padding: 36px 40px; max-width: 880px; }
   transition: var(--transition);
 }
 .pp-btn:hover { border-color: var(--accent); color: var(--accent); }
-.pp-btn.active { border-color: var(--accent); background: rgba(91,184,216,0.12); color: var(--accent); }
+.pp-btn.active { border-color: var(--accent); background: rgba(26,111,168,0.10); color: var(--accent); }
 
 .pp-viewer-area {
   display: flex;
@@ -743,6 +743,168 @@ main { padding: 36px 40px; max-width: 880px; }
   .pp-layout { grid-template-columns: 1fr; height: auto; }
   .pp-iframe  { min-height: 70vh; }
 }
+
+/* ── PAST PAPER AI TUTOR ───────────────────────────────────────────────────── */
+.tutor-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(26,111,168,0.35);
+  transition: var(--transition);
+}
+.tutor-fab:hover { background: #155d8e; transform: translateY(-2px); }
+
+.tutor-chat {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 600;
+  width: 390px;
+  max-width: calc(100vw - 40px);
+  max-height: 560px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 40px rgba(26,111,168,0.18);
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.tutor-chat.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.tutor-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 2px solid var(--border);
+  flex-shrink: 0;
+}
+.tutor-chat-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tutor-chat-icon { font-size: 1.5rem; line-height: 1; }
+.tutor-chat-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--heading);
+  line-height: 1.2;
+}
+.tutor-chat-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.tutor-chat-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+.tutor-chat-close:hover { color: var(--heading); background: rgba(26,111,168,0.08); }
+
+.tutor-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+
+.tutor-msg {
+  max-width: 86%;
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+.tutor-msg--ai {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+.tutor-msg--user {
+  background: var(--accent);
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.tutor-msg--thinking { opacity: 0.5; font-style: italic; }
+
+.tutor-chat-footer {
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px;
+  border-top: 2px solid var(--border);
+  flex-shrink: 0;
+}
+.tutor-chat-input {
+  flex: 1;
+  resize: none;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: var(--bg);
+  color: var(--heading);
+  font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  transition: var(--transition);
+}
+.tutor-chat-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(26,111,168,0.12);
+}
+.tutor-chat-send {
+  align-self: flex-end;
+  padding: 10px 16px;
+  min-height: 44px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.tutor-chat-send:hover:not(:disabled) { background: #155d8e; }
+.tutor-chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* ── REDUCED MOTION ────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
