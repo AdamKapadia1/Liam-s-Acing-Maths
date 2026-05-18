@@ -32,6 +32,8 @@ function loadProgress() {
       state.completedTopics.forEach(t => {
         const dot = document.getElementById('dot-' + t);
         if (dot) dot.classList.add('done');
+        const btn = document.querySelector(`.subtopic-btn[onclick*="'${t}'"]`);
+        if (btn) btn.classList.add('done');
       });
     }
     if (saved.totalQs)           state.totalQs           = saved.totalQs;
@@ -259,6 +261,11 @@ async function loadTopic(area, subtopic) {
   state.sessionCorrect  = 0;
   state.sessionTotal    = 0;
   state.usedQuestions.delete(subtopic); // reset bank for this topic
+
+  // Highlight active subtopic in sidebar
+  document.querySelectorAll('.subtopic-btn').forEach(b => b.classList.remove('active'));
+  const activeBtn = document.querySelector(`.subtopic-btn[onclick*="'${subtopic}'"]`);
+  if (activeBtn) activeBtn.classList.add('active');
 
   // Show content screen
   document.getElementById('home-screen').style.display     = 'none';
@@ -602,13 +609,58 @@ function renderInlineFormulas() {
   renderFormulaGrid('inline-formula-grid', relevant);
 }
 
+// ── STREAK ────────────────────────────────────────────────────────────────────
+function getStreak() {
+  const today     = new Date().toDateString();
+  const yesterday = new Date(Date.now() - 864e5).toDateString();
+  let { streak = 0, lastDay = '' } = JSON.parse(localStorage.getItem('lam_streak') || '{}');
+  if (lastDay === today)      return streak;
+  if (lastDay === yesterday)  streak++;
+  else                        streak = 1;
+  localStorage.setItem('lam_streak', JSON.stringify({ streak, lastDay: today }));
+  return streak;
+}
+
 // ── PROGRESS ──────────────────────────────────────────────────────────────────
 function markTopicDone(subtopic) {
+  const alreadyDone = state.completedTopics.has(subtopic);
   state.completedTopics.add(subtopic);
   const dot = document.getElementById('dot-' + subtopic);
   if (dot) dot.classList.add('done');
+  // Also mark the sidebar subtopic-btn as done
+  const btn = document.querySelector(`.subtopic-btn[onclick*="'${subtopic}'"]`);
+  if (btn) btn.classList.add('done');
   saveProgress();
   updateProgress();
+  if (!alreadyDone) showTopicCompleteModal(subtopic);
+}
+
+function showTopicCompleteModal(subtopic) {
+  const streak = getStreak();
+  const streakLine = streak >= 2
+    ? `<div class="modal-streak">🔥 ${streak}-day streak!</div>`
+    : '';
+  const msgs = [
+    'Smashed it! 💪', 'Keep going — you\'re on fire!',
+    'Nailed it! One step closer to that grade 5.',
+    'Excellent work! Liam would be proud. 🎓',
+    'That\'s another one ticked off! 🎉',
+  ];
+  const msg = msgs[Math.floor(Math.random() * msgs.length)];
+  const modal = document.createElement('div');
+  modal.className = 'complete-modal-overlay';
+  modal.innerHTML = `
+    <div class="complete-modal">
+      <div class="complete-modal-tick">✓</div>
+      <div class="complete-modal-title">${subtopic} complete!</div>
+      <div class="complete-modal-msg">${msg}</div>
+      ${streakLine}
+      <button class="complete-modal-btn" onclick="this.closest('.complete-modal-overlay').remove()">
+        Keep revising →
+      </button>
+    </div>`;
+  document.body.appendChild(modal);
+  setTimeout(() => modal.classList.add('visible'), 10);
 }
 
 function updateProgress() {

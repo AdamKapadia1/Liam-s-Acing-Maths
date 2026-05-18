@@ -144,7 +144,9 @@ header {
   transition: var(--transition);
 }
 .subtopic-btn:hover { color: var(--text); background: rgba(26,111,168,0.06); }
-.subtopic-btn.active { color: var(--accent2); border-left-color: var(--accent2); }
+.subtopic-btn.active { color: var(--accent); border-left-color: var(--accent); background: rgba(26,111,168,0.08); font-weight: 600; }
+.subtopic-btn.done { color: #1a7a4a; }
+.subtopic-btn.done .progress-dot { background: #22c55e; }
 
 .progress-dot {
   width: 8px;
@@ -153,8 +155,67 @@ header {
   background: var(--border);
   margin-left: auto;
   flex-shrink: 0;
+  transition: background 0.3s ease;
 }
-.progress-dot.done { background: var(--accent2); }
+.progress-dot.done { background: #22c55e; }
+
+/* ── TOPIC COMPLETE MODAL ────────────────────────────────────────────────────── */
+.complete-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+  opacity: 0; transition: opacity 0.25s ease;
+}
+.complete-modal-overlay.visible { opacity: 1; }
+.complete-modal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 36px 32px;
+  max-width: 360px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  transform: translateY(12px);
+  transition: transform 0.25s ease;
+}
+.complete-modal-overlay.visible .complete-modal { transform: translateY(0); }
+.complete-modal-tick {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: 2rem;
+  line-height: 64px;
+  margin: 0 auto 16px;
+}
+.complete-modal-title {
+  font-size: 1.2rem; font-weight: 700; color: var(--heading); margin-bottom: 8px;
+}
+.complete-modal-msg {
+  font-size: 0.9rem; color: var(--muted); margin-bottom: 14px;
+}
+.modal-streak {
+  display: inline-block;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #c2410c;
+  font-size: 0.85rem; font-weight: 700;
+  border-radius: 999px;
+  padding: 4px 14px;
+  margin-bottom: 20px;
+}
+.complete-modal-btn {
+  display: block; width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  color: #fff;
+  border: none; border-radius: 10px;
+  font-size: 0.9rem; font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.complete-modal-btn:hover { background: #155d8e; }
 
 .section-divider { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
 
