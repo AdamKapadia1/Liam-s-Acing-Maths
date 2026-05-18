@@ -1,24 +1,56 @@
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 const state = {
-  topic:          null,
-  subtopic:       null,
+  topic:           null,
+  subtopic:        null,
   currentQuestion: null,
   sessionCorrect:  0,
   sessionTotal:    0,
   totalQs:         0,
+  totalCorrect:    0,
   completedTopics: new Set(),
-  usedQuestions:   new Map(), // subtopic → Set of used bank indices
+  usedQuestions:   new Map(),
+  papersOpened:    new Set(),         // "2023-1", "2022-2", …
+  questionsPerTopic: {},              // { subtopic: { total, correct } }
 };
+
+// ── PERSISTENCE ───────────────────────────────────────────────────────────────
+function saveProgress() {
+  localStorage.setItem('lam_progress', JSON.stringify({
+    completedTopics:   [...state.completedTopics],
+    totalQs:           state.totalQs,
+    totalCorrect:      state.totalCorrect,
+    papersOpened:      [...state.papersOpened],
+    questionsPerTopic: state.questionsPerTopic,
+  }));
+}
+
+function loadProgress() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('lam_progress') || '{}');
+    if (saved.completedTopics) {
+      state.completedTopics = new Set(saved.completedTopics);
+      state.completedTopics.forEach(t => {
+        const dot = document.getElementById('dot-' + t);
+        if (dot) dot.classList.add('done');
+      });
+    }
+    if (saved.totalQs)           state.totalQs           = saved.totalQs;
+    if (saved.totalCorrect)      state.totalCorrect       = saved.totalCorrect;
+    if (saved.papersOpened)      state.papersOpened       = new Set(saved.papersOpened);
+    if (saved.questionsPerTopic) state.questionsPerTopic  = saved.questionsPerTopic;
+  } catch {}
+}
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  loadProgress();
   showHome();
   updateProgress();
 });
 
 // ── NAVIGATION ────────────────────────────────────────────────────────────────
 function allScreensOff() {
-  ['home-screen','content-screen','cheatsheet-screen','past-papers-screen']
+  ['home-screen','content-screen','cheatsheet-screen','past-papers-screen','progress-screen']
     .forEach(id => document.getElementById(id).style.display = 'none');
   document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
 }
@@ -71,7 +103,9 @@ function openPaper(evt, year, paper) {
   document.getElementById('pp-controls').style.display  = 'flex';
   document.getElementById('pp-timer-bar').style.display = 'flex';
 
-  // Update tutor context label
+  // Track paper and update tutor context label
+  state.papersOpened.add(`${year}-${paper}`);
+  saveProgress();
   document.getElementById('tutor-chat-sub').textContent =
     `${year} Higher · ${paperLabel}`;
 
@@ -343,38 +377,83 @@ async function newQuestion() {
     return;
   }
 
-  // Bank exhausted — fall back to AI generation
+  // Bank exhausted — use AI for unlimited generation
   card.innerHTML = loadingHtml('Generating question…');
 
   const diffOptions = [
-    { label: 'Foundation (Grade 3–4)', key: 'foundation' },
-    { label: 'Grade 4',                key: 'grade4'     },
-    { label: 'Grade 5',                key: 'grade5'     },
+    { label: 'Grade 4',  key: 'grade4'     },
+    { label: 'Grade 4',  key: 'grade4'     }, // weighted slightly
+    { label: 'Grade 5',  key: 'grade5'     },
+    { label: 'Grade 5',  key: 'grade5'     }, // weighted slightly
+    { label: 'Grade 6',  key: 'grade6'     },
+    { label: 'Grade 7',  key: 'grade7'     },
   ];
   const diff = diffOptions[Math.floor(Math.random() * diffOptions.length)];
 
-  const system = `You are an AQA GCSE Maths examiner writing authentic exam questions.
-Respond ONLY with valid JSON — no markdown fences, no preamble.
-Required fields:
+  // Track AI-generated question summaries per subtopic to avoid repetition
+  if (!state.aiQuestionHistory) state.aiQuestionHistory = {};
+  if (!state.aiQuestionHistory[state.subtopic]) state.aiQuestionHistory[state.subtopic] = [];
+  const history = state.aiQuestionHistory[state.subtopic];
+  const recentSummary = history.slice(-5).join(' | ');
+
+  // Rotate question type angles per topic to ensure variety
+  const questionAngles = {
+    'Pythagoras\' Theorem': ['find the hypotenuse', 'find a shorter side', '3D Pythagoras', 'coordinates context', 'worded real-life scenario', 'show that proof'],
+    'Trigonometry': ['find a missing side using sin/cos/tan', 'find a missing angle', 'worded bearing problem', 'elevation and depression', 'multi-step with area'],
+    'Quadratic Equations': ['solve by factorising', 'solve using the quadratic formula', 'complete the square', 'form and solve from a worded context', 'find intersections'],
+    'Simultaneous Equations': ['linear pair eliminate method', 'substitution method', 'one linear one quadratic', 'worded problem set up and solve'],
+    'Straight Line Graphs': ['find gradient and y-intercept', 'find equation from two points', 'parallel/perpendicular lines', 'midpoint of a line segment', 'distance between two points'],
+    'Fractions': ['add/subtract with different denominators', 'multiply mixed numbers', 'divide fractions', 'fraction of an amount', 'fraction worded problem', 'reverse percentage via fractions'],
+    'Percentages': ['percentage increase/decrease', 'reverse percentage', 'compound interest', 'simple interest', 'percentage change as fraction/decimal', 'VAT/sale context'],
+    'Algebra': ['expand and simplify double brackets', 'factorise fully', 'solve linear equation', 'form equation from worded context', 'algebraic proof', 'substitution into formula'],
+    'Ratio & Proportion': ['divide in a ratio', 'best-value comparison', 'direct proportion', 'inverse proportion', 'map scale', 'recipe scaling'],
+    'Probability': ['tree diagram', 'Venn diagram', 'conditional probability', 'relative frequency', 'listing outcomes', 'combined events'],
+    'Statistics': ['find mean from frequency table', 'interpret cumulative frequency', 'compare two data sets using averages/range', 'estimate median from grouped data', 'draw/interpret histogram'],
+    'Circle Theorems': ['angle in semicircle', 'angles in same segment', 'cyclic quadrilateral', 'tangent-radius', 'alternate segment theorem', 'two-chord problem'],
+    'Vectors': ['find a resultant vector', 'show two vectors are parallel', 'midpoint using vectors', 'proof of collinearity', 'magnitude of a vector'],
+    'Surds': ['simplify surd', 'expand surd brackets', 'rationalise denominator', 'solve equation involving surds', 'show that proof with surds'],
+  };
+  const angles = questionAngles[state.subtopic];
+  const angleHint = angles
+    ? `Vary the question angle. Suggested angle for this question (choose one): ${angles[Math.floor(Math.random() * angles.length)]}.`
+    : 'Vary the question style from previous questions.';
+
+  const system = `You are an experienced AQA GCSE Mathematics examiner with 15 years of paper-writing experience.
+Your task: write a single, original ${diff.label}-level exam question on the topic "${state.subtopic}" for AQA GCSE Higher tier.
+
+Respond ONLY with a single valid JSON object. No markdown, no fences, no preamble, no explanation — just raw JSON.
+
+JSON schema (all fields required):
 {
   "difficulty": "${diff.label}",
-  "marks": 2,
-  "question": "full question text",
-  "answer": "full correct answer with working",
-  "hints": ["hint 1", "hint 2"]
+  "marks": <integer 2–5>,
+  "question": "<full question text>",
+  "answer": "<full mark-scheme style answer with all working shown>",
+  "hints": ["<hint 1>", "<hint 2>"]
 }
-marks must be 2, 3 or 4.
-AQA style rules:
-- Use AQA command words: "Work out", "Calculate", "Find", "Show that", "Prove that", "Explain", "Estimate", "Give a reason".
-- Include the mark allocation in square brackets at the end of the question text, e.g. [3 marks].
-- Avoid trivially simple numbers; use realistic exam-style values.`;
 
-  const user = `Write a ${diff.label} AQA-style exam question on: ${state.subtopic}.
-Use realistic numbers and AQA command words. Do not include the answer in the question text.`;
+AQA examiner rules you MUST follow:
+1. Use exactly one AQA Higher command word to open the question: "Work out", "Calculate", "Find", "Show that", "Prove that", "Explain why", "Estimate", "Give a reason for your answer", "Write down", "Simplify".
+2. End the question text with the mark allocation in square brackets, e.g. [3 marks].
+3. Use realistic, exam-quality numbers — not trivially simple. Avoid whole-number-only answers for calculation questions.
+4. For "Show that" or "Prove that" questions, supply the target result in the question.
+5. Mark allocation guide: 2 marks = single-step or simple two-step; 3 marks = multi-step with method marks; 4–5 marks = extended multi-step or proof.
+6. The answer field must mirror an AQA mark scheme: show all method steps, award-worthy intermediate values, and the final answer.
+7. Hints must be process hints, not giveaways (e.g. "Start by finding the gradient using rise ÷ run", not "the answer is 3").
+8. Do NOT include the answer or working inside the question field.
+9. Write a completely new question — it must differ substantially from these recent questions on this topic: ${recentSummary || 'none yet'}.`;
+
+  const user = `Write a ${diff.label} AQA GCSE Higher question on: ${state.subtopic}.
+${angleHint}
+Make the numbers and context realistic and varied. The student is aiming for grades 4–7.`;
 
   try {
     const q = await callClaudeJSON(system, user);
     q.diffKey = diff.key;
+    // Store a brief summary to prevent future repetition
+    const summary = (q.question || '').substring(0, 80);
+    history.push(summary);
+    if (history.length > 20) history.shift(); // keep last 20 per topic
     state.currentQuestion = q;
     renderQuestion(q);
   } catch (err) {
@@ -432,6 +511,13 @@ async function submitAnswer() {
   state.totalQs++;
   document.getElementById('session-total').textContent = state.sessionTotal;
 
+  // Per-topic tracking
+  if (!state.questionsPerTopic[state.subtopic]) {
+    state.questionsPerTopic[state.subtopic] = { total: 0, correct: 0 };
+  }
+  state.questionsPerTopic[state.subtopic].total++;
+  saveProgress();
+
   const system = `You are an AQA GCSE Maths examiner marking a student's answer using AQA mark scheme conventions. Be encouraging.
 Respond ONLY with valid JSON — no markdown fences, no preamble.
 Required fields:
@@ -463,8 +549,11 @@ Total marks available: ${state.currentQuestion.marks}`;
 
     if (passed) {
       state.sessionCorrect++;
+      state.totalCorrect++;
+      state.questionsPerTopic[state.subtopic].correct++;
       document.getElementById('session-correct').textContent = state.sessionCorrect;
     }
+    saveProgress();
 
     feedCard.className = 'feedback-card ' + (passed ? 'correct' : 'incorrect');
     feedCard.innerHTML = `
@@ -518,6 +607,7 @@ function markTopicDone(subtopic) {
   state.completedTopics.add(subtopic);
   const dot = document.getElementById('dot-' + subtopic);
   if (dot) dot.classList.add('done');
+  saveProgress();
   updateProgress();
 }
 
@@ -528,6 +618,79 @@ function updateProgress() {
   document.getElementById('stat-total').textContent = total;
   document.getElementById('stat-qs').textContent    = state.totalQs;
   document.getElementById('overall-bar').style.width = Math.round(done / total * 100) + '%';
+}
+
+// ── PROGRESS SCREEN ───────────────────────────────────────────────────────────
+function showProgress() {
+  allScreensOff();
+  document.getElementById('progress-screen').style.display = 'block';
+  renderProgressScreen();
+}
+
+function renderProgressScreen() {
+  const totalTopics  = TOTAL_TOPICS;
+  const doneTopic    = state.completedTopics.size;
+  const totalQs      = state.totalQs;
+  const totalCorrect = state.totalCorrect;
+  const accuracy     = totalQs > 0 ? Math.round(totalCorrect / totalQs * 100) : null;
+  const papersCount  = state.papersOpened.size;
+
+  // Overall bar
+  const pct = Math.round(doneTopic / totalTopics * 100);
+  document.getElementById('pg-bar-fill').style.width = pct + '%';
+  document.getElementById('pg-pct').textContent      = pct + '%';
+
+  // Stats
+  document.getElementById('pg-topics').textContent   = `${doneTopic}/${totalTopics}`;
+  document.getElementById('pg-qs').textContent        = totalQs;
+  document.getElementById('pg-accuracy').textContent  = accuracy !== null ? accuracy + '%' : '—';
+  document.getElementById('pg-papers').textContent    = papersCount;
+
+  // Category breakdown
+  const catEl = document.getElementById('pg-categories');
+  catEl.innerHTML = '';
+  Object.entries(TOPICS).forEach(([, area]) => {
+    const total = area.subtopics.length;
+    const done  = area.subtopics.filter(s => state.completedTopics.has(s.id)).length;
+    const pct   = Math.round(done / total * 100);
+
+    const section = document.createElement('div');
+    section.className = 'pg-cat';
+    section.innerHTML = `
+      <div class="pg-cat-header">
+        <span class="pg-cat-icon">${area.icon}</span>
+        <span class="pg-cat-label">${area.label}</span>
+        <span class="pg-cat-count">${done}/${total}</span>
+      </div>
+      <div class="pg-cat-bar-wrap">
+        <div class="pg-cat-bar-fill" style="width:${pct}%"></div>
+      </div>
+      <div class="pg-topics-grid">
+        ${area.subtopics.map(s => {
+          const tq = state.questionsPerTopic[s.id];
+          const studied = state.completedTopics.has(s.id);
+          return `<div class="pg-topic ${studied ? 'pg-topic--done' : ''}">
+            <span class="pg-topic-tick">${studied ? '✓' : '○'}</span>
+            <span class="pg-topic-name">${s.id}</span>
+            ${tq ? `<span class="pg-topic-qs">${tq.correct}/${tq.total}</span>` : ''}
+          </div>`;
+        }).join('')}
+      </div>`;
+    catEl.appendChild(section);
+  });
+}
+
+function resetProgress() {
+  if (!confirm('Reset all progress? This cannot be undone.')) return;
+  localStorage.removeItem('lam_progress');
+  state.completedTopics.clear();
+  state.totalQs      = 0;
+  state.totalCorrect = 0;
+  state.papersOpened.clear();
+  state.questionsPerTopic = {};
+  document.querySelectorAll('.progress-dot').forEach(d => d.classList.remove('done'));
+  updateProgress();
+  renderProgressScreen();
 }
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
