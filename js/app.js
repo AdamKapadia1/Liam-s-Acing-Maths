@@ -785,15 +785,31 @@ function renderProgressScreen() {
         ${area.subtopics.map(s => {
           const tq = state.questionsPerTopic[s.id];
           const studied = state.completedTopics.has(s.id);
+          const sid = s.id.replace(/'/g, "\\'");
           return `<div class="pg-topic ${studied ? 'pg-topic--done' : ''}">
             <span class="pg-topic-tick">${studied ? '✓' : '○'}</span>
             <span class="pg-topic-name">${s.id}</span>
             ${tq ? `<span class="pg-topic-qs">${tq.correct}/${tq.total}</span>` : ''}
+            ${(studied || tq) ? `<button class="pg-topic-reset" onclick="resetTopic('${sid}')" title="Reset this topic">↺</button>` : ''}
           </div>`;
         }).join('')}
       </div>`;
     catEl.appendChild(section);
   });
+}
+
+function resetTopic(subtopic) {
+  if (!confirm(`Reset progress for "${subtopic}"?`)) return;
+  state.completedTopics.delete(subtopic);
+  delete state.questionsPerTopic[subtopic];
+  const dot = document.getElementById('dot-' + subtopic);
+  if (dot) dot.classList.remove('done');
+  const btn = document.querySelector(`.subtopic-btn[onclick*="'${subtopic}'"]`);
+  if (btn) btn.classList.remove('done');
+  if (state.subtopic === subtopic) renderSparkline(subtopic);
+  saveProgress();
+  updateProgress();
+  renderProgressScreen();
 }
 
 function resetProgress() {

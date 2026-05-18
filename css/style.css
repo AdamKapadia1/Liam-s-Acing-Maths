@@ -1134,6 +1134,20 @@ main { padding: 24px 28px; max-width: none; }
   gap: 5px;
 }
 .pg-topic.done, .pg-topic.pg-topic--done { border-color: var(--accent); color: var(--accent); background: #e8f4fd; }
+.pg-topic-reset {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0 2px;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.pg-topic:hover .pg-topic-reset { opacity: 1; }
+.pg-topic-reset:hover { color: #e05; }
 .pg-reset-btn {
   display: block;
   margin: 24px auto 0;
