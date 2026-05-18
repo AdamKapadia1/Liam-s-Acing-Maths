@@ -317,37 +317,34 @@
           </div>
           <iframe id="pp-iframe" class="pp-iframe" src="" style="display:none" title="Past Paper PDF"></iframe>
         </div>
-      </div>
-    </div>
 
-    <!-- ── AI TUTOR CHAT (fixed overlay, shown when a paper is open) ────────── -->
-    <button class="tutor-fab" id="tutor-fab" onclick="tutorOpen()" style="display:none"
-            aria-label="Ask the Maths Tutor">
-      🤖 Ask Tutor
-    </button>
-
-    <div class="tutor-chat" id="tutor-chat" role="dialog" aria-label="Maths Tutor Chat">
-      <div class="tutor-chat-header">
-        <div class="tutor-chat-title">
-          <span class="tutor-chat-icon">🤖</span>
-          <div>
-            <div class="tutor-chat-name">Maths Tutor</div>
-            <div class="tutor-chat-sub" id="tutor-chat-sub">Select a paper to begin</div>
+        <!-- Right: permanent AI tutor panel -->
+        <div class="pp-tutor-sidebar">
+          <div class="tutor-chat" id="tutor-chat" role="complementary" aria-label="Maths Tutor">
+            <div class="tutor-chat-header">
+              <div class="tutor-chat-title">
+                <span class="tutor-chat-icon">🤖</span>
+                <div>
+                  <div class="tutor-chat-name">Maths Tutor</div>
+                  <div class="tutor-chat-sub" id="tutor-chat-sub">Select a paper to begin</div>
+                </div>
+              </div>
+            </div>
+            <div class="tutor-chat-messages" id="tutor-chat-messages">
+              <div class="tutor-msg tutor-msg--ai">
+                Hi! I'm here whenever you get stuck. Describe any question to me — the numbers, what it asks you to find, and any shapes or diagrams — and I'll walk you through the method step by step.
+              </div>
+            </div>
+            <div class="tutor-chat-footer">
+              <textarea class="tutor-chat-input" id="tutor-chat-input"
+                placeholder="Describe the question you're stuck on…"
+                rows="3"
+                onkeydown="tutorKeydown(event)"></textarea>
+              <button class="tutor-chat-send" id="tutor-chat-send" onclick="tutorSend()">Send</button>
+            </div>
           </div>
         </div>
-        <button class="tutor-chat-close" onclick="tutorClose()" aria-label="Close tutor">✕</button>
-      </div>
-      <div class="tutor-chat-messages" id="tutor-chat-messages">
-        <div class="tutor-msg tutor-msg--ai">
-          Hi! I'm working through this paper with you. I can't read the PDF directly, so when you're stuck on a question, paste the question text here or describe it — the numbers given, what it asks you to find, and any shapes or diagrams. I'll give you the full method step by step.
-        </div>
-      </div>
-      <div class="tutor-chat-footer">
-        <textarea class="tutor-chat-input" id="tutor-chat-input"
-          placeholder="Paste the question or describe it — numbers, what to find, any diagrams…"
-          rows="3"
-          onkeydown="tutorKeydown(event)"></textarea>
-        <button class="tutor-chat-send" id="tutor-chat-send" onclick="tutorSend()">Send</button>
+
       </div>
     </div>
 

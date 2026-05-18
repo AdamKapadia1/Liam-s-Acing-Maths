@@ -71,8 +71,7 @@ function openPaper(evt, year, paper) {
   document.getElementById('pp-controls').style.display  = 'flex';
   document.getElementById('pp-timer-bar').style.display = 'flex';
 
-  // Show tutor FAB and update its context label
-  document.getElementById('tutor-fab').style.display = 'flex';
+  // Update tutor context label
   document.getElementById('tutor-chat-sub').textContent =
     `${year} Higher · ${paperLabel}`;
 
@@ -140,17 +139,6 @@ function ppUpdateTimerDisplay() {
 
 // ── PAST PAPER AI TUTOR ────────────────────────────────────────────────────────
 const tutorHistory = []; // {role, content}
-
-function tutorOpen() {
-  document.getElementById('tutor-chat').classList.add('open');
-  document.getElementById('tutor-fab').style.display = 'none';
-  document.getElementById('tutor-chat-input').focus();
-}
-
-function tutorClose() {
-  document.getElementById('tutor-chat').classList.remove('open');
-  document.getElementById('tutor-fab').style.display = 'flex';
-}
 
 function tutorKeydown(evt) {
   if (evt.key === 'Enter' && !evt.shiftKey) {

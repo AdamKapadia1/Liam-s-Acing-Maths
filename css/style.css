@@ -610,8 +610,8 @@ main { padding: 36px 40px; max-width: 880px; }
 /* ── PAST PAPERS ───────────────────────────────────────────────────────────── */
 .pp-layout {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 24px;
+  grid-template-columns: 200px 1fr 320px;
+  gap: 20px;
   height: calc(100vh - 200px);
   min-height: 600px;
 }
@@ -739,57 +739,33 @@ main { padding: 36px 40px; max-width: 880px; }
   background: #fff;
 }
 
+@media (max-width: 1024px) {
+  .pp-layout { grid-template-columns: 180px 1fr; height: auto; }
+  .pp-tutor-sidebar { display: none; }
+}
 @media (max-width: 768px) {
   .pp-layout { grid-template-columns: 1fr; height: auto; }
   .pp-iframe  { min-height: 70vh; }
 }
 
 /* ── PAST PAPER AI TUTOR ───────────────────────────────────────────────────── */
-.tutor-fab {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 22px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(26,111,168,0.35);
-  transition: var(--transition);
-}
-.tutor-fab:hover { background: #155d8e; transform: translateY(-2px); }
+.tutor-fab { display: none; } /* removed — tutor is always visible */
 
-.tutor-chat {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 600;
-  width: 390px;
-  max-width: calc(100vw - 40px);
-  max-height: 560px;
-  background: var(--surface);
-  border: 2px solid var(--border);
-  border-radius: 16px;
+.pp-tutor-sidebar {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 40px rgba(26,111,168,0.18);
-  transform: translateY(20px);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  height: 100%;
+  overflow: hidden;
 }
-.tutor-chat.open {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: all;
+
+.tutor-chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .tutor-chat-header {
@@ -819,17 +795,7 @@ main { padding: 36px 40px; max-width: 880px; }
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-.tutor-chat-close {
-  background: none;
-  border: none;
-  color: var(--muted);
-  font-size: 1.1rem;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: var(--transition);
-}
-.tutor-chat-close:hover { color: var(--heading); background: rgba(26,111,168,0.08); }
+.tutor-chat-close { display: none; }
 
 .tutor-chat-messages {
   flex: 1;
