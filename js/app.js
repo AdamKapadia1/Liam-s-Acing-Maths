@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ── NAVIGATION ────────────────────────────────────────────────────────────────
 function allScreensOff() {
   ['home-screen','content-screen','cheatsheet-screen','past-papers-screen','progress-screen']
-    .forEach(id => document.getElementById(id).style.display = 'none');
+    .forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
   document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
 }
 

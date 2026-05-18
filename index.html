@@ -97,6 +97,9 @@
       <button class="topic-btn" onclick="showPastPapers()">
         <span class="icon">📝</span> Past Papers
       </button>
+      <button class="topic-btn" onclick="showProgress()">
+        <span class="icon">📊</span> My Progress
+      </button>
     </div>
   </aside>
 
@@ -356,6 +359,52 @@
       </div>
       <p class="cheatsheet-intro">Key formulae for GCSE Higher. Items marked ⚠️ are <strong>not</strong> given in the exam — you must memorise them.</p>
       <div class="formula-grid" id="formula-grid"></div>
+    </div>
+
+    <!-- PROGRESS SCREEN -->
+    <div class="content-screen" id="progress-screen">
+      <div class="content-header">
+        <button class="back-btn" onclick="showHome()">← Back</button>
+        <div class="content-title">My Progress</div>
+        <button class="btn-secondary" onclick="resetProgress()"
+          style="margin-left:auto;font-size:0.78rem;padding:6px 14px;min-height:36px">
+          Reset Progress
+        </button>
+      </div>
+
+      <!-- Overall bar -->
+      <div class="pg-overall">
+        <div class="pg-overall-top">
+          <span class="pg-overall-label">Topics Studied</span>
+          <span class="pg-pct" id="pg-pct">0%</span>
+        </div>
+        <div class="pg-bar-wrap">
+          <div class="pg-bar-fill" id="pg-bar-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="pg-stats-row">
+        <div class="pg-stat">
+          <div class="pg-stat-num" id="pg-topics">0/34</div>
+          <div class="pg-stat-label">Topics Studied</div>
+        </div>
+        <div class="pg-stat">
+          <div class="pg-stat-num" id="pg-qs">0</div>
+          <div class="pg-stat-label">Questions Done</div>
+        </div>
+        <div class="pg-stat">
+          <div class="pg-stat-num" id="pg-accuracy">—</div>
+          <div class="pg-stat-label">Accuracy</div>
+        </div>
+        <div class="pg-stat">
+          <div class="pg-stat-num" id="pg-papers">0</div>
+          <div class="pg-stat-label">Papers Opened</div>
+        </div>
+      </div>
+
+      <!-- Category breakdown -->
+      <div id="pg-categories"></div>
     </div>
 
   </main>
