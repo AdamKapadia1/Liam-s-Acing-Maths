@@ -4,6 +4,7 @@
 
 const TOPIC_VIDEOS = {
   // Number
+  'Four Operations':                    'MZ7brXpdO7A', // Multiplying Decimals (Higher & Foundation) | GCSE Maths Tutor
   'Integers & Decimals':              'K5FhK9Nc4bY', // Recurring Decimals as Fractions (Higher Only)
   'Fractions':                        'uXFMQvKnt4w', // Fractions, Decimals & Percentages Conversions
   'Percentages':                      'kLqvFDgdOKI', // Increase or Decrease by a Percentage

@@ -7,6 +7,7 @@ const TOPICS = {
     label: 'Number',
     icon: '🔢',
     subtopics: [
+      { id: 'Four Operations',             higherOnly: false },
       { id: 'Integers & Decimals',         higherOnly: false },
       { id: 'Fractions',                   higherOnly: false },
       { id: 'Percentages',                 higherOnly: false },

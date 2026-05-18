@@ -5,6 +5,38 @@
 
 const LESSON_BANK = {
 
+  'Four Operations': `
+<h3>Four Operations: ＋ − × ÷</h3>
+<p>The four operations — <strong>addition, subtraction, multiplication and division</strong> — underpin every topic in GCSE Maths. You must be confident applying all four to integers, decimals and negative numbers, especially on <strong>Paper 1 (non-calculator)</strong>.</p>
+
+<h4>Addition &amp; Subtraction</h4>
+<p>Use the <strong>column method</strong>: line up digits by place value (ones under ones, tenths under tenths). Always carry or borrow carefully.</p>
+<div class="formula">e.g. 34.7 + 8.56 → align: 34.70 + 08.56 = 43.26</div>
+<p>With <strong>negative numbers</strong>: adding a negative = subtracting; subtracting a negative = adding.</p>
+<div class="formula">5 − (−3) = 5 + 3 = 8 &nbsp;&nbsp;|&nbsp;&nbsp; −4 + (−2) = −6</div>
+
+<h4>Multiplication — Non-Calculator</h4>
+<p>Use <strong>long multiplication</strong> for large integers. For decimals:</p>
+<ol>
+  <li>Ignore the decimal points and multiply as whole numbers.</li>
+  <li>Count the total decimal places in both original numbers.</li>
+  <li>Insert that many decimal places into the answer.</li>
+</ol>
+<div class="formula">3.6 × 2.4 → 36 × 24 = 864 → 2 d.p. total → 8.64</div>
+
+<h4>Division — Non-Calculator</h4>
+<p>Use the <strong>bus stop method</strong> (short division) for integers and decimals. To divide by a decimal:</p>
+<ol>
+  <li>Multiply both the dividend and divisor by a power of 10 to make the divisor a whole number.</li>
+  <li>Divide as normal.</li>
+</ol>
+<div class="formula">7.2 ÷ 0.4 → multiply both by 10 → 72 ÷ 4 = 18</div>
+
+<h4>Calculator Questions (Papers 2 &amp; 3)</h4>
+<p>On calculator papers, focus on <strong>inputting correctly</strong>: use brackets for fractions (e.g. (3 + 4) ÷ 5), and double-check negative number inputs. Show the calculation you typed in your working.</p>
+
+<div class="tip"><strong>AQA Exam Tip:</strong> In non-calculator questions, always show the full column method or bus stop working — method marks are awarded even if the final answer is wrong. Watch out for dividing by decimals: "÷ 0.5" is the same as "× 2".</div>`,
+
   'Integers & Decimals': `
 <h3>Integers & Decimals</h3>
 <p>An <strong>integer</strong> is any whole number (positive, negative or zero). A <strong>decimal</strong> is any number with digits after a decimal point. You need to be confident multiplying and dividing decimals without a calculator (Paper 1).</p>

@@ -6,6 +6,45 @@ const QUESTION_BANK = {
 
   // ── NUMBER ─────────────────────────────────────────────────────────────────
 
+  'Four Operations': [
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Work out 4.6 × 8 without a calculator. Show your working. [2 marks]',
+      answer: '46 × 8 = 368, then 1 decimal place → 36.8',
+      hints: ['Multiply 46 × 8 ignoring the decimal', 'Then put 1 decimal place back into your answer']
+    },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Work out 9.6 ÷ 0.4 without a calculator. [2 marks]',
+      answer: 'Multiply both by 10: 96 ÷ 4 = 24',
+      hints: ['Multiply both numbers by 10 to remove the decimal from the divisor', '96 ÷ 4 = 24']
+    },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Work out 247 × 36 without a calculator. Show your working. [2 marks]',
+      answer: '247 × 30 = 7410, 247 × 6 = 1482, total = 8892',
+      hints: ['Split 36 into 30 + 6', 'Multiply 247 by each part separately, then add']
+    },
+    {
+      difficulty: 'Grade 4', diffKey: 'grade4', marks: 3,
+      question: 'Work out 3.8 × 2.5 without a calculator. Show your working. [3 marks]',
+      answer: '38 × 25 = 950. Two decimal places total → 9.50',
+      hints: ['Ignore decimals: 38 × 25', '38 × 25 = 38 × 20 + 38 × 5 = 760 + 190 = 950, then 2 d.p. → 9.50']
+    },
+    {
+      difficulty: 'Grade 4', diffKey: 'grade4', marks: 3,
+      question: 'Work out −4 × (−3) + 7 ÷ (−1). Show your working. [3 marks]',
+      answer: '(−4) × (−3) = 12; 7 ÷ (−1) = −7; 12 + (−7) = 5',
+      hints: ['Negative × negative = positive', 'Positive ÷ negative = negative; then add the two results']
+    },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'Without using a calculator, work out 0.28 × 0.5. Give your answer as a decimal. [3 marks]',
+      answer: '28 × 5 = 140; three decimal places total → 0.140 = 0.14',
+      hints: ['Multiply 28 × 5 first', 'Count total decimal places: 2 + 1 = 3, so divide 140 by 1000']
+    },
+  ],
+
   'Integers & Decimals': [
     {
       difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
