@@ -9,9 +9,54 @@ const state = {
   totalCorrect:    0,
   completedTopics: new Set(),
   usedQuestions:   new Map(),
-  papersOpened:    new Set(),         // "2023-1", "2022-2", …
-  questionsPerTopic: {},              // { subtopic: { total, correct } }
+  papersOpened:    new Set(),
+  questionsPerTopic: {},             // { subtopic: { total, correct, history: [1,0,…] } }
 };
+
+// ── POMODORO TIMER ────────────────────────────────────────────────────────────
+const POMO_SECS = 25 * 60;
+let pomoSecsLeft = POMO_SECS;
+let pomoInterval = null;
+let pomoRunning  = false;
+
+function pomoToggle() {
+  if (pomoRunning) {
+    clearInterval(pomoInterval);
+    pomoRunning = false;
+    document.getElementById('pomo-btn').textContent = 'Resume';
+  } else {
+    if (pomoSecsLeft <= 0) pomoReset();
+    pomoRunning = true;
+    document.getElementById('pomo-btn').textContent = 'Pause';
+    pomoInterval = setInterval(() => {
+      pomoSecsLeft--;
+      pomoRender();
+      if (pomoSecsLeft <= 0) {
+        clearInterval(pomoInterval);
+        pomoRunning = false;
+        document.getElementById('pomo-btn').textContent = 'Done!';
+        document.getElementById('pomo-wrap').classList.add('pomo-done');
+        setTimeout(() => document.getElementById('pomo-wrap').classList.remove('pomo-done'), 4000);
+      }
+    }, 1000);
+  }
+}
+
+function pomoReset() {
+  clearInterval(pomoInterval);
+  pomoRunning  = false;
+  pomoSecsLeft = POMO_SECS;
+  document.getElementById('pomo-btn').textContent = 'Start';
+  document.getElementById('pomo-wrap').classList.remove('pomo-done', 'pomo-low');
+  pomoRender();
+}
+
+function pomoRender() {
+  const m = String(Math.floor(pomoSecsLeft / 60)).padStart(2, '0');
+  const s = String(pomoSecsLeft % 60).padStart(2, '0');
+  document.getElementById('pomo-time').textContent = `${m}:${s}`;
+  document.getElementById('pomo-wrap').classList.toggle('pomo-low', pomoSecsLeft <= 300 && pomoSecsLeft > 0);
+}
 
 // ── PERSISTENCE ───────────────────────────────────────────────────────────────
 function saveProgress() {
@@ -281,6 +326,7 @@ async function loadTopic(area, subtopic) {
   document.getElementById('session-correct').textContent = '0';
   document.getElementById('session-total').textContent   = '0';
 
+  renderSparkline(subtopic);
   switchTab('learn');
   generateLesson();
 }
@@ -554,12 +600,18 @@ Total marks available: ${state.currentQuestion.marks}`;
     const halfMarks = Math.ceil(state.currentQuestion.marks / 2);
     const passed    = result.correct || (result.awarded_marks >= halfMarks);
 
+    const tq = state.questionsPerTopic[state.subtopic];
+    if (!tq.history) tq.history = [];
+    tq.history.push(passed ? 1 : 0);
+    if (tq.history.length > 5) tq.history.shift();
+
     if (passed) {
       state.sessionCorrect++;
       state.totalCorrect++;
-      state.questionsPerTopic[state.subtopic].correct++;
+      tq.correct++;
       document.getElementById('session-correct').textContent = state.sessionCorrect;
     }
+    renderSparkline(state.subtopic);
     saveProgress();
 
     feedCard.className = 'feedback-card ' + (passed ? 'correct' : 'incorrect');
@@ -607,6 +659,18 @@ function renderInlineFormulas() {
   if (!container) return;
   container.innerHTML = `<div class="formula-grid" id="inline-formula-grid"></div>`;
   renderFormulaGrid('inline-formula-grid', relevant);
+}
+
+// ── SPARKLINE ─────────────────────────────────────────────────────────────────
+function renderSparkline(subtopic) {
+  const el = document.getElementById('sparkline-dots');
+  if (!el) return;
+  const tq = state.questionsPerTopic[subtopic];
+  const history = tq?.history || [];
+  if (!history.length) { el.innerHTML = '<span class="spark-empty">no attempts yet</span>'; return; }
+  el.innerHTML = history.map(v =>
+    `<span class="spark-dot ${v ? 'spark-pass' : 'spark-fail'}" title="${v ? 'Correct' : 'Incorrect'}"></span>`
+  ).join('');
 }
 
 // ── STREAK ────────────────────────────────────────────────────────────────────

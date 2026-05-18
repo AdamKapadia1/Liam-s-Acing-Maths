@@ -59,6 +59,86 @@ header {
 }
 .logo span { color: var(--accent); }
 
+/* ── POMODORO TIMER ─────────────────────────────────────────────────────────── */
+.pomo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 12px 5px 10px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.pomo-wrap.pomo-low { border-color: #f59e0b; background: #fffbeb; }
+.pomo-wrap.pomo-done { border-color: #22c55e; background: #f0fdf4; animation: pomo-pulse 0.6s ease 3; }
+@keyframes pomo-pulse {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+.pomo-label { font-size: 0.9rem; line-height: 1; }
+.pomo-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--heading);
+  min-width: 42px;
+  text-align: center;
+}
+.pomo-wrap.pomo-low  .pomo-time { color: #b45309; }
+.pomo-wrap.pomo-done .pomo-time { color: #16a34a; }
+.pomo-btn {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.pomo-btn:hover { background: var(--accent); color: #fff; }
+.pomo-reset {
+  font-size: 0.85rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+.pomo-reset:hover { color: var(--heading); }
+
+/* ── SPARKLINE ───────────────────────────────────────────────────────────────── */
+.sparkline-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.sparkline-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.sparkline-dots { display: flex; gap: 5px; align-items: center; }
+.spark-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.spark-pass { background: #22c55e; }
+.spark-fail { background: #ef4444; }
+.spark-empty { font-size: 0.72rem; color: var(--muted); font-style: italic; }
+
 .header-badge {
   font-family: 'DM Mono', monospace;
   font-size: 0.65rem;

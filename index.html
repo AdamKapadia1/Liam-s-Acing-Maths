@@ -12,6 +12,15 @@
 
 <header>
   <div class="logo">Liam's Acing <span>Maths</span></div>
+
+  <!-- Pomodoro timer -->
+  <div class="pomo-wrap" id="pomo-wrap">
+    <span class="pomo-label">🍅</span>
+    <span class="pomo-time" id="pomo-time">25:00</span>
+    <button class="pomo-btn" id="pomo-btn" onclick="pomoToggle()">Start</button>
+    <button class="pomo-reset" onclick="pomoReset()" title="Reset">↺</button>
+  </div>
+
   <div class="header-badge">AQA GCSE HIGHER · GRADE 4–5</div>
 </header>
 
@@ -223,6 +232,10 @@
           <div class="progress-stats" style="margin-top:0">
             <div class="stat"><div class="stat-num" id="session-correct">0</div><div class="stat-label">Correct</div></div>
             <div class="stat"><div class="stat-num" id="session-total">0</div><div class="stat-label">Attempted</div></div>
+          </div>
+          <div class="sparkline-row">
+            <span class="sparkline-label">Last 5:</span>
+            <span class="sparkline-dots" id="sparkline-dots"></span>
           </div>
         </div>
         <div class="question-card" id="question-card">
