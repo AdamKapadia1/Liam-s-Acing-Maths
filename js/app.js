@@ -325,6 +325,8 @@ async function loadTopic(area, subtopic) {
   document.getElementById('feedback-card').className = 'feedback-card';
   document.getElementById('session-correct').textContent = '0';
   document.getElementById('session-total').textContent   = '0';
+  const tcb = document.getElementById('topic-complete-banner');
+  if (tcb) tcb.style.display = 'none';
 
   renderSparkline(subtopic);
   switchTab('learn');
@@ -701,30 +703,21 @@ function markTopicDone(subtopic) {
 
 function showTopicCompleteModal(subtopic) {
   const streak = getStreak();
-  const streakLine = streak >= 2
-    ? `<div class="modal-streak">🔥 ${streak}-day streak!</div>`
-    : '';
   const msgs = [
     'Smashed it! 💪', 'Keep going — you\'re on fire!',
     'Nailed it! One step closer to that grade 5.',
-    'Excellent work! Liam would be proud. 🎓',
+    'Excellent work! Keep it up. 🎓',
     'That\'s another one ticked off! 🎉',
   ];
   const msg = msgs[Math.floor(Math.random() * msgs.length)];
-  const modal = document.createElement('div');
-  modal.className = 'complete-modal-overlay';
-  modal.innerHTML = `
-    <div class="complete-modal">
-      <div class="complete-modal-tick">✓</div>
-      <div class="complete-modal-title">${subtopic} complete!</div>
-      <div class="complete-modal-msg">${msg}</div>
-      ${streakLine}
-      <button class="complete-modal-btn" onclick="this.closest('.complete-modal-overlay').remove()">
-        Keep revising →
-      </button>
-    </div>`;
-  document.body.appendChild(modal);
-  setTimeout(() => modal.classList.add('visible'), 10);
+  const banner = document.getElementById('topic-complete-banner');
+  if (!banner) return;
+  document.getElementById('tcb-title').textContent = `${subtopic} complete!`;
+  document.getElementById('tcb-msg').textContent   = msg;
+  document.getElementById('tcb-streak').textContent = streak >= 2 ? `🔥 ${streak}-day streak!` : '';
+  banner.style.display = 'flex';
+  banner.classList.remove('tcb-visible');
+  setTimeout(() => banner.classList.add('tcb-visible'), 10);
 }
 
 function updateProgress() {
