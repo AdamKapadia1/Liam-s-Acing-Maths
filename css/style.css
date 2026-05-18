@@ -536,6 +536,55 @@ main { padding: 24px 28px; max-width: none; }
   line-height: 1.85;
 }
 
+/* ── WORKED CALCULATION LAYOUTS ─────────────────────────────────────────────── */
+.ai-content .calc-box {
+  background: #f8faff;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 16px 0;
+  display: inline-block;
+  min-width: 260px;
+}
+.long-mult-tbl, .bus-stop-tbl {
+  border-collapse: collapse;
+  font-family: 'DM Mono', monospace;
+  font-size: 1.05rem;
+  color: var(--heading);
+}
+.long-mult-tbl td, .bus-stop-tbl td {
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  vertical-align: middle;
+  padding: 2px 4px;
+}
+/* Long multiplication */
+.lm-op-row td { border-top: 2px solid var(--heading); }
+.lm-sep td    { border-top: 2px solid var(--heading); }
+.lm-ans td    { border-top: 3px double var(--heading); font-weight: 700; }
+.lm-note      { font-size: 0.72rem; color: var(--muted); text-align: left !important; padding-left: 12px !important; white-space: nowrap; width: auto !important; }
+/* Bus stop division */
+.bs-blank  { }
+.bs-divisor {
+  border-right: 2px solid var(--heading);
+  font-weight: 700;
+  padding-right: 8px !important;
+}
+.bs-q {
+  border-bottom: 2px solid var(--heading);
+  font-weight: 700;
+  color: var(--accent);
+}
+.bs-d { }
+.bs-carry-row td {
+  font-size: 0.7rem;
+  color: #e05a00;
+  vertical-align: top;
+  height: 1rem;
+  padding-top: 0 !important;
+}
+
 /* ── QUESTION CARD ─────────────────────────────────────────────────────────── */
 .question-card {
   background: var(--card);

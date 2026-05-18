@@ -19,37 +19,56 @@ const LESSON_BANK = {
 <div class="formula">5 − (−3) = 5 + 3 = 8 &nbsp;&nbsp;|&nbsp;&nbsp; −4 + (−2) = −6</div>
 
 <h4>Long Multiplication — Step by Step</h4>
-<p>Use this method for any multiplication without a calculator. Worked example: <strong>247 × 36</strong></p>
+<p>Worked example: <strong>247 × 36</strong></p>
 <ol>
-  <li>Multiply 247 by the <strong>units digit</strong> (6): 247 × 6 = 1482. Write on row 1.</li>
-  <li>Multiply 247 by the <strong>tens digit</strong> (3, which means 30): 247 × 30 = 7410. Write on row 2 (shift one place left, or put a 0 at the end).</li>
-  <li>Add the two rows together.</li>
+  <li>Multiply 247 by the <strong>units digit</strong> (6) → 1482. Write on row 1.</li>
+  <li>Multiply 247 by the <strong>tens digit</strong> (30) → 7410. Write on row 2, shifted one place left.</li>
+  <li>Add both rows for the final answer.</li>
 </ol>
-<div class="formula">    247
-  ×  36
-  ────
-   1482   ← 247 × 6
-  7410    ← 247 × 30
-  ────
-  8892</div>
-<p><strong>For decimals</strong> — ignore the decimal points, multiply as whole numbers, then count total decimal places and reinsert:</p>
-<div class="formula">3.6 × 2.4 → treat as 36 × 24 = 864
-Both numbers have 1 d.p. → 2 d.p. total → 8.64</div>
+<div class="calc-box">
+  <table class="long-mult-tbl">
+    <tr><td></td><td></td><td>2</td><td>4</td><td>7</td><td class="lm-note"></td></tr>
+    <tr class="lm-op-row"><td></td><td>×</td><td></td><td>3</td><td>6</td><td class="lm-note"></td></tr>
+    <tr class="lm-sep"><td></td><td></td><td>1</td><td>4</td><td>8</td><td>2</td><td class="lm-note">← 247 × 6</td></tr>
+    <tr><td>+</td><td>7</td><td>4</td><td>1</td><td>0</td><td></td><td class="lm-note">← 247 × 30</td></tr>
+    <tr class="lm-ans"><td></td><td></td><td>8</td><td>8</td><td>9</td><td>2</td><td class="lm-note"></td></tr>
+  </table>
+</div>
+<p><strong>For decimals</strong> — strip the decimal points, multiply as whole numbers, then count the total decimal places and reinsert:</p>
+<div class="formula">3.6 × 2.4 → 36 × 24 = 864 → 2 d.p. total → <strong>8.64</strong></div>
 
 <h4>Bus Stop Division — Step by Step</h4>
-<p>Use this method (also called short division) for dividing without a calculator. Worked example: <strong>952 ÷ 7</strong></p>
+<p>Worked example: <strong>952 ÷ 7</strong></p>
 <ol>
-  <li>Write the number inside the bus stop, divisor outside.</li>
-  <li>Divide into each digit left to right, carrying any remainder to the next digit.</li>
+  <li>Divide 9 by 7 → <strong>1</strong> remainder 2. Carry the 2.</li>
+  <li>Divide 25 by 7 → <strong>3</strong> remainder 4. Carry the 4.</li>
+  <li>Divide 42 by 7 → <strong>6</strong> remainder 0. Done.</li>
 </ol>
-<div class="formula">   1  3  6
-7 ) 9  5  2
-   ↓  ↓  ↓
-9÷7=1 r2 → bring 2 → 25÷7=3 r4 → 42÷7=6
-Answer: 136</div>
-<p><strong>Dividing by a decimal</strong> — multiply both numbers by a power of 10 first to make the divisor a whole number:</p>
-<div class="formula">7.2 ÷ 0.4 → × both by 10 → 72 ÷ 4 = 18</div>
-<div class="formula">6.3 ÷ 0.09 → × both by 100 → 630 ÷ 9 = 70</div>
+<div class="calc-box">
+  <table class="bus-stop-tbl">
+    <tr>
+      <td class="bs-blank"></td>
+      <td class="bs-q">1</td>
+      <td class="bs-q">3</td>
+      <td class="bs-q">6</td>
+    </tr>
+    <tr>
+      <td class="bs-divisor">7</td>
+      <td class="bs-d">9</td>
+      <td class="bs-d">5</td>
+      <td class="bs-d">2</td>
+    </tr>
+    <tr class="bs-carry-row">
+      <td></td>
+      <td><sup>2</sup></td>
+      <td><sup>4</sup></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+<p><strong>Dividing by a decimal</strong> — multiply both numbers by a power of 10 to make the divisor a whole number first:</p>
+<div class="formula">7.2 ÷ 0.4 → × both by 10 → 72 ÷ 4 = <strong>18</strong></div>
+<div class="formula">6.3 ÷ 0.09 → × both by 100 → 630 ÷ 9 = <strong>70</strong></div>
 
 <h4>Calculator Questions (Papers 2 &amp; 3)</h4>
 <p>Use brackets when inputting fractions or combined operations. Always write down the full calculation you entered so you can earn method marks.</p>
