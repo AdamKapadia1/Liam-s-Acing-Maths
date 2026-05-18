@@ -13,7 +13,7 @@ const API_KEY = process.env.ANTHROPIC_API_KEY;
 app.post('/api/chat', async (req, res) => {
   if (!API_KEY) {
     return res.status(500).json({
-      error: { message: 'ANTHROPIC_API_KEY not set — add it to your .env file' }
+      error: { message: 'ANTHROPIC_API_KEY not set on server' }
     });
   }
   try {
@@ -35,6 +35,5 @@ app.post('/api/chat', async (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`MathsPass proxy running → http://localhost:${PORT}`);
-  console.log('Open index.html with Live Server and questions will now work.');
+  console.log(`Liam's Acing Maths running → http://localhost:${PORT}`);
 });
