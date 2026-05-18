@@ -9,33 +9,53 @@ const LESSON_BANK = {
 <h3>Four Operations: ＋ − × ÷</h3>
 <p>The four operations — <strong>addition, subtraction, multiplication and division</strong> — underpin every topic in GCSE Maths. You must be confident applying all four to integers, decimals and negative numbers, especially on <strong>Paper 1 (non-calculator)</strong>.</p>
 
-<h4>Addition &amp; Subtraction</h4>
-<p>Use the <strong>column method</strong>: line up digits by place value (ones under ones, tenths under tenths). Always carry or borrow carefully.</p>
-<div class="formula">e.g. 34.7 + 8.56 → align: 34.70 + 08.56 = 43.26</div>
-<p>With <strong>negative numbers</strong>: adding a negative = subtracting; subtracting a negative = adding.</p>
+<h4>Addition &amp; Subtraction — Column Method</h4>
+<p>Line up digits by place value. Add zeros so decimal points align. Carry or borrow one column at a time.</p>
+<div class="formula">  34.70
++ 08.56
+──────
+  43.26</div>
+<p><strong>Negative numbers:</strong> adding a negative = subtracting; subtracting a negative = adding.</p>
 <div class="formula">5 − (−3) = 5 + 3 = 8 &nbsp;&nbsp;|&nbsp;&nbsp; −4 + (−2) = −6</div>
 
-<h4>Multiplication — Non-Calculator</h4>
-<p>Use <strong>long multiplication</strong> for large integers. For decimals:</p>
+<h4>Long Multiplication — Step by Step</h4>
+<p>Use this method for any multiplication without a calculator. Worked example: <strong>247 × 36</strong></p>
 <ol>
-  <li>Ignore the decimal points and multiply as whole numbers.</li>
-  <li>Count the total decimal places in both original numbers.</li>
-  <li>Insert that many decimal places into the answer.</li>
+  <li>Multiply 247 by the <strong>units digit</strong> (6): 247 × 6 = 1482. Write on row 1.</li>
+  <li>Multiply 247 by the <strong>tens digit</strong> (3, which means 30): 247 × 30 = 7410. Write on row 2 (shift one place left, or put a 0 at the end).</li>
+  <li>Add the two rows together.</li>
 </ol>
-<div class="formula">3.6 × 2.4 → 36 × 24 = 864 → 2 d.p. total → 8.64</div>
+<div class="formula">    247
+  ×  36
+  ────
+   1482   ← 247 × 6
+  7410    ← 247 × 30
+  ────
+  8892</div>
+<p><strong>For decimals</strong> — ignore the decimal points, multiply as whole numbers, then count total decimal places and reinsert:</p>
+<div class="formula">3.6 × 2.4 → treat as 36 × 24 = 864
+Both numbers have 1 d.p. → 2 d.p. total → 8.64</div>
 
-<h4>Division — Non-Calculator</h4>
-<p>Use the <strong>bus stop method</strong> (short division) for integers and decimals. To divide by a decimal:</p>
+<h4>Bus Stop Division — Step by Step</h4>
+<p>Use this method (also called short division) for dividing without a calculator. Worked example: <strong>952 ÷ 7</strong></p>
 <ol>
-  <li>Multiply both the dividend and divisor by a power of 10 to make the divisor a whole number.</li>
-  <li>Divide as normal.</li>
+  <li>Write the number inside the bus stop, divisor outside.</li>
+  <li>Divide into each digit left to right, carrying any remainder to the next digit.</li>
 </ol>
-<div class="formula">7.2 ÷ 0.4 → multiply both by 10 → 72 ÷ 4 = 18</div>
+<div class="formula">   1  3  6
+7 ) 9  5  2
+   ↓  ↓  ↓
+9÷7=1 r2 → bring 2 → 25÷7=3 r4 → 42÷7=6
+Answer: 136</div>
+<p><strong>Dividing by a decimal</strong> — multiply both numbers by a power of 10 first to make the divisor a whole number:</p>
+<div class="formula">7.2 ÷ 0.4 → × both by 10 → 72 ÷ 4 = 18</div>
+<div class="formula">6.3 ÷ 0.09 → × both by 100 → 630 ÷ 9 = 70</div>
 
 <h4>Calculator Questions (Papers 2 &amp; 3)</h4>
-<p>On calculator papers, focus on <strong>inputting correctly</strong>: use brackets for fractions (e.g. (3 + 4) ÷ 5), and double-check negative number inputs. Show the calculation you typed in your working.</p>
+<p>Use brackets when inputting fractions or combined operations. Always write down the full calculation you entered so you can earn method marks.</p>
+<div class="formula">e.g. (3.7 + 8.2) ÷ 5 — always use brackets around the numerator</div>
 
-<div class="tip"><strong>AQA Exam Tip:</strong> In non-calculator questions, always show the full column method or bus stop working — method marks are awarded even if the final answer is wrong. Watch out for dividing by decimals: "÷ 0.5" is the same as "× 2".</div>`,
+<div class="tip"><strong>AQA Exam Tip:</strong> In Paper 1, show every row of your long multiplication or every step of your bus stop — method marks are awarded even if your final answer is wrong. A common trick: "÷ 0.5" is the same as "× 2", and "÷ 0.1" is the same as "× 10".</div>`,
 
   'Integers & Decimals': `
 <h3>Integers & Decimals</h3>
