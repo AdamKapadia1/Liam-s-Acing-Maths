@@ -617,7 +617,7 @@ main { padding: 24px 28px; max-width: none; }
 /* ── PAST PAPERS ───────────────────────────────────────────────────────────── */
 .pp-layout {
   display: grid;
-  grid-template-columns: 160px 1fr 280px;
+  grid-template-columns: 160px 1fr 400px;
   gap: 16px;
   height: calc(100vh - 180px);
   min-height: 640px;
