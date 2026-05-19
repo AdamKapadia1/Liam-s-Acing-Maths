@@ -111,7 +111,7 @@ const LESSON_BANK = {
   <li>Add or subtract the numerators. Keep the denominator the same.</li>
   <li>Simplify if possible.</li>
 </ol>
-<div class="formula">3/4 + 1/6 = 9/12 + 2/12 = 11/12</div>
+<div class="formula"><span class="frac"><span class="num">3</span><span class="den">4</span></span> + <span class="frac"><span class="num">1</span><span class="den">6</span></span> = <span class="frac"><span class="num">9</span><span class="den">12</span></span> + <span class="frac"><span class="num">2</span><span class="den">12</span></span> = <span class="frac"><span class="num">11</span><span class="den">12</span></span></div>
 
 <h4>Multiplying Fractions</h4>
 <ol>
@@ -119,7 +119,7 @@ const LESSON_BANK = {
   <li>Multiply numerators together, then denominators together.</li>
   <li>Cancel/simplify before or after multiplying.</li>
 </ol>
-<div class="formula">2/3 × 3/5 = 6/15 = 2/5</div>
+<div class="formula"><span class="frac"><span class="num">2</span><span class="den">3</span></span> × <span class="frac"><span class="num">3</span><span class="den">5</span></span> = <span class="frac"><span class="num">6</span><span class="den">15</span></span> = <span class="frac"><span class="num">2</span><span class="den">5</span></span></div>
 
 <h4>Dividing Fractions</h4>
 <ol>
@@ -127,7 +127,7 @@ const LESSON_BANK = {
   <li>Flip (reciprocal) the second fraction.</li>
   <li>Multiply.</li>
 </ol>
-<div class="formula">3/4 ÷ 1/2 = 3/4 × 2/1 = 6/4 = 3/2 = 1½</div>
+<div class="formula"><span class="frac"><span class="num">3</span><span class="den">4</span></span> ÷ <span class="frac"><span class="num">1</span><span class="den">2</span></span> = <span class="frac"><span class="num">3</span><span class="den">4</span></span> × <span class="frac"><span class="num">2</span><span class="den">1</span></span> = <span class="frac"><span class="num">6</span><span class="den">4</span></span> = <span class="frac"><span class="num">3</span><span class="den">2</span></span> = 1½</div>
 
 <div class="tip"><strong>AQA Exam Tip:</strong> "Show that" questions involving fractions require every line of working — the final answer alone scores zero. Always convert mixed numbers to improper fractions before multiplying or dividing.</div>`,
 
@@ -351,9 +351,9 @@ x = 4</div>
   <li>Multiply every term by the LCM of the denominators to clear fractions.</li>
   <li>Then solve normally.</li>
 </ol>
-<div class="formula">(x+4)/3 − (x−1)/2 = 2
-Multiply by 6: 2(x+4) − 3(x−1) = 12
-2x + 8 − 3x + 3 = 12 → −x = 1 → x = −1</div>
+<div class="formula"><span class="frac"><span class="num">x + 4</span><span class="den">3</span></span> − <span class="frac"><span class="num">x − 1</span><span class="den">2</span></span> = 2
+Multiply by 6:&nbsp; 2(x+4) − 3(x−1) = 12
+2x + 8 − 3x + 3 = 12 &rarr; −x = 1 &rarr; x = −1</div>
 
 <h4>Setting Up Equations</h4>
 <p>When given a word problem, define your variable, write the equation, then solve.</p>
@@ -365,7 +365,7 @@ Multiply by 6: 2(x+4) − 3(x−1) = 12
 <p>Any straight line can be written in the form <strong>y = mx + c</strong>, where m is the gradient and c is the y-intercept.</p>
 
 <h4>Gradient</h4>
-<div class="formula">m = (y₂ − y₁) / (x₂ − x₁) = rise / run</div>
+<div class="formula">m = <span class="frac"><span class="num">y₂ − y₁</span><span class="den">x₂ − x₁</span></span> = <span class="frac"><span class="num">rise</span><span class="den">run</span></span></div>
 <p>A positive gradient slopes upward left to right. Negative slopes downward.</p>
 
 <h4>Finding the Equation of a Line</h4>
@@ -373,7 +373,7 @@ Multiply by 6: 2(x+4) − 3(x−1) = 12
   <li>Calculate the gradient using two points.</li>
   <li>Substitute one point and m into y = mx + c to find c.</li>
 </ol>
-<div class="formula">Through (2, 5) and (6, 13): m = (13−5)/(6−2) = 2. Using (2,5): 5 = 2(2) + c → c = 1. Line: y = 2x + 1</div>
+<div class="formula">Through (2, 5) and (6, 13):&nbsp; m = <span class="frac"><span class="num">13 − 5</span><span class="den">6 − 2</span></span> = <span class="frac"><span class="num">8</span><span class="den">4</span></span> = 2.&nbsp; Using (2, 5):&nbsp; 5 = 2(2) + c &rarr; c = 1.&nbsp; Line: y = 2x + 1</div>
 
 <h4>Parallel and Perpendicular Lines</h4>
 <ul>
