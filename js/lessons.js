@@ -210,23 +210,29 @@ const LESSON_BANK = {
 <p>A <strong>power</strong> (or index) tells you how many times to multiply a number by itself. A <strong>root</strong> is the inverse operation.</p>
 
 <h4>Key Laws of Indices</h4>
-<div class="formula">aᵐ × aⁿ = aᵐ⁺ⁿ
-aᵐ ÷ aⁿ = aᵐ⁻ⁿ
-(aᵐ)ⁿ = aᵐⁿ
-a⁰ = 1
-a⁻ⁿ = 1/aⁿ
-a^(1/n) = ⁿ√a
-a^(m/n) = (ⁿ√a)ᵐ</div>
+<div class="formula">aᵐ × aⁿ = aᵐ⁺ⁿ<br>aᵐ ÷ aⁿ = aᵐ⁻ⁿ<br>(aᵐ)ⁿ = aᵐⁿ<br>a⁰ = 1<br>a⁻ⁿ = <span class="frac"><span class="num">1</span><span class="den">aⁿ</span></span><br>a<span class="sup-frac"><span class="num">1</span><span class="den">n</span></span> = ⁿ√a<br>a<span class="sup-frac"><span class="num">m</span><span class="den">n</span></span> = (ⁿ√a)ᵐ</div>
 
 <h4>Fractional Indices</h4>
 <ol>
   <li>The <strong>denominator</strong> tells you the root to take.</li>
   <li>The <strong>numerator</strong> tells you the power to raise to.</li>
 </ol>
-<div class="formula">27^(2/3) = (³√27)² = 3² = 9</div>
+<div class="formula">27<span class="sup-frac"><span class="num">2</span><span class="den">3</span></span> = (³√27)² = 3² = 9</div>
+<div class="worked-steps">
+  <div class="ws-step"><span class="ws-num">1</span><span>The index is <span class="frac"><span class="num">2</span><span class="den">3</span></span>. The <strong>denominator (3)</strong> tells you to take the <strong>cube root</strong>. The <strong>numerator (2)</strong> tells you to then <strong>square</strong> the result.</span></div>
+  <div class="ws-step"><span class="ws-num">2</span><span>Take the cube root first: ³√27 = <strong>3</strong> &nbsp;(because 3 × 3 × 3 = 27)</span></div>
+  <div class="ws-step"><span class="ws-num">3</span><span>Now raise to the power of 2: 3² = 3 × 3 = <strong>9</strong></span></div>
+</div>
+<div class="ws-answer">Answer: 9</div>
 
 <h4>Negative Indices</h4>
-<div class="formula">4⁻² = 1/4² = 1/16</div>
+<div class="formula">4⁻² = <span class="frac"><span class="num">1</span><span class="den">4²</span></span> = <span class="frac"><span class="num">1</span><span class="den">16</span></span></div>
+<div class="worked-steps">
+  <div class="ws-step"><span class="ws-num">1</span><span>A negative index means "1 over": 4⁻² = <span class="frac"><span class="num">1</span><span class="den">4²</span></span></span></div>
+  <div class="ws-step"><span class="ws-num">2</span><span>Work out the denominator: 4² = 4 × 4 = <strong>16</strong></span></div>
+  <div class="ws-step"><span class="ws-num">3</span><span>So 4⁻² = <span class="frac"><span class="num">1</span><span class="den">16</span></span></span></div>
+</div>
+<div class="ws-answer">Answer: <span class="frac"><span class="num">1</span><span class="den">16</span></span></div>
 
 <div class="tip"><strong>AQA Exam Tip:</strong> Learn the square numbers to 15² = 225 and cube numbers to 5³ = 125 for Paper 1. With fractional indices, always do the root first, then the power — this keeps the numbers smaller and easier to work with.</div>`,
 

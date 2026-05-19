@@ -1276,6 +1276,26 @@ main { padding: 24px 28px; max-width: none; }
   line-height: 2.4;
 }
 
+/* ── SUPERSCRIPT FRACTION (for fractional indices like a^(m/n)) ────────────── */
+.sup-frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: super;
+  font-size: 0.58em;
+  line-height: 1.1;
+  margin: 0 1px;
+}
+.sup-frac .num {
+  padding: 0 3px;
+  border-bottom: 1px solid currentColor;
+  text-align: center;
+}
+.sup-frac .den {
+  padding: 0 3px;
+  text-align: center;
+}
+
 /* ── PROPER FRACTION DISPLAY ──────────────────────────────────────────────── */
 .frac {
   display: inline-flex;
