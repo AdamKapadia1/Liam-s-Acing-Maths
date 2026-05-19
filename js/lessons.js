@@ -112,6 +112,14 @@ const LESSON_BANK = {
   <li>Simplify if possible.</li>
 </ol>
 <div class="formula"><span class="frac"><span class="num">3</span><span class="den">4</span></span> + <span class="frac"><span class="num">1</span><span class="den">6</span></span> = <span class="frac"><span class="num">9</span><span class="den">12</span></span> + <span class="frac"><span class="num">2</span><span class="den">12</span></span> = <span class="frac"><span class="num">11</span><span class="den">12</span></span></div>
+<div class="worked-steps">
+  <div class="ws-step"><span class="ws-num">1</span><span>Find the LCM of 4 and 6. Multiples of 4: 4, 8, <strong>12</strong>, 16… &nbsp;Multiples of 6: 6, <strong>12</strong>, 18… &nbsp;→ LCM = <strong>12</strong></span></div>
+  <div class="ws-step"><span class="ws-num">2</span><span>Convert <span class="frac"><span class="num">3</span><span class="den">4</span></span> → to get denominator 12, multiply top and bottom by 3 → <span class="frac"><span class="num">3 × 3</span><span class="den">4 × 3</span></span> = <span class="frac"><span class="num">9</span><span class="den">12</span></span></span></div>
+  <div class="ws-step"><span class="ws-num">3</span><span>Convert <span class="frac"><span class="num">1</span><span class="den">6</span></span> → to get denominator 12, multiply top and bottom by 2 → <span class="frac"><span class="num">1 × 2</span><span class="den">6 × 2</span></span> = <span class="frac"><span class="num">2</span><span class="den">12</span></span></span></div>
+  <div class="ws-step"><span class="ws-num">4</span><span>Add the numerators — the denominator stays the same: <span class="frac"><span class="num">9</span><span class="den">12</span></span> + <span class="frac"><span class="num">2</span><span class="den">12</span></span> = <span class="frac"><span class="num">9 + 2</span><span class="den">12</span></span> = <span class="frac"><span class="num">11</span><span class="den">12</span></span></span></div>
+  <div class="ws-step"><span class="ws-num">5</span><span>Can we simplify? 11 is a prime number, so the only common factor of 11 and 12 is 1. It cannot be simplified.</span></div>
+</div>
+<div class="ws-answer">Answer: <span class="frac"><span class="num">11</span><span class="den">12</span></span></div>
 
 <h4>Multiplying Fractions</h4>
 <ol>
@@ -120,6 +128,13 @@ const LESSON_BANK = {
   <li>Cancel/simplify before or after multiplying.</li>
 </ol>
 <div class="formula"><span class="frac"><span class="num">2</span><span class="den">3</span></span> × <span class="frac"><span class="num">3</span><span class="den">5</span></span> = <span class="frac"><span class="num">6</span><span class="den">15</span></span> = <span class="frac"><span class="num">2</span><span class="den">5</span></span></div>
+<div class="worked-steps">
+  <div class="ws-step"><span class="ws-num">1</span><span>Multiply the numerators together: 2 × 3 = <strong>6</strong></span></div>
+  <div class="ws-step"><span class="ws-num">2</span><span>Multiply the denominators together: 3 × 5 = <strong>15</strong> → this gives <span class="frac"><span class="num">6</span><span class="den">15</span></span></span></div>
+  <div class="ws-step"><span class="ws-num">3</span><span>Simplify <span class="frac"><span class="num">6</span><span class="den">15</span></span>. Factors of 6: 1, 2, <strong>3</strong>, 6. Factors of 15: 1, <strong>3</strong>, 5, 15. HCF = 3.</span></div>
+  <div class="ws-step"><span class="ws-num">4</span><span>Divide top and bottom by 3: <span class="frac"><span class="num">6 ÷ 3</span><span class="den">15 ÷ 3</span></span> = <span class="frac"><span class="num">2</span><span class="den">5</span></span></span></div>
+</div>
+<div class="ws-answer">Answer: <span class="frac"><span class="num">2</span><span class="den">5</span></span></div>
 
 <h4>Dividing Fractions</h4>
 <ol>
@@ -128,6 +143,15 @@ const LESSON_BANK = {
   <li>Multiply.</li>
 </ol>
 <div class="formula"><span class="frac"><span class="num">3</span><span class="den">4</span></span> ÷ <span class="frac"><span class="num">1</span><span class="den">2</span></span> = <span class="frac"><span class="num">3</span><span class="den">4</span></span> × <span class="frac"><span class="num">2</span><span class="den">1</span></span> = <span class="frac"><span class="num">6</span><span class="den">4</span></span> = <span class="frac"><span class="num">3</span><span class="den">2</span></span> = 1½</div>
+<div class="worked-steps">
+  <div class="ws-step"><span class="ws-num">1</span><span>Keep the first fraction exactly as it is: <span class="frac"><span class="num">3</span><span class="den">4</span></span></span></div>
+  <div class="ws-step"><span class="ws-num">2</span><span>Find the reciprocal of the second fraction — flip it upside down: <span class="frac"><span class="num">1</span><span class="den">2</span></span> becomes <span class="frac"><span class="num">2</span><span class="den">1</span></span></span></div>
+  <div class="ws-step"><span class="ws-num">3</span><span>Change the ÷ sign to ×: <span class="frac"><span class="num">3</span><span class="den">4</span></span> × <span class="frac"><span class="num">2</span><span class="den">1</span></span></span></div>
+  <div class="ws-step"><span class="ws-num">4</span><span>Multiply numerators: 3 × 2 = 6. Multiply denominators: 4 × 1 = 4 → <span class="frac"><span class="num">6</span><span class="den">4</span></span></span></div>
+  <div class="ws-step"><span class="ws-num">5</span><span>Simplify <span class="frac"><span class="num">6</span><span class="den">4</span></span>. HCF of 6 and 4 is 2. Divide top and bottom by 2 → <span class="frac"><span class="num">3</span><span class="den">2</span></span></span></div>
+  <div class="ws-step"><span class="ws-num">6</span><span>Convert to a mixed number: 3 ÷ 2 = <strong>1 remainder 1</strong> → the whole number is 1, and <span class="frac"><span class="num">1</span><span class="den">2</span></span> is left over → <strong>1½</strong></span></div>
+</div>
+<div class="ws-answer">Answer: 1½</div>
 
 <div class="tip"><strong>AQA Exam Tip:</strong> "Show that" questions involving fractions require every line of working — the final answer alone scores zero. Always convert mixed numbers to improper fractions before multiplying or dividing.</div>`,
 

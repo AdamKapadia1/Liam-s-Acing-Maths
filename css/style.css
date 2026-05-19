@@ -1235,6 +1235,47 @@ main { padding: 24px 28px; max-width: none; }
   .tab-btn { flex: 1; text-align: center; padding: 10px 12px; }
 }
 
+/* ── WORKED STEPS ─────────────────────────────────────────────────────────── */
+.worked-steps {
+  margin: 4px 0 20px;
+}
+.ws-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  font-size: 0.9rem;
+  line-height: 2.4;
+  color: var(--text);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.ws-step:last-child { border-bottom: none; }
+.ws-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.ws-answer {
+  display: inline-block;
+  background: rgba(42,157,120,0.1);
+  border: 1px solid rgba(42,157,120,0.35);
+  border-radius: 6px;
+  padding: 6px 14px;
+  margin: 4px 0 16px;
+  font-weight: 700;
+  color: var(--accent2);
+  font-size: 0.95rem;
+  line-height: 2.4;
+}
+
 /* ── PROPER FRACTION DISPLAY ──────────────────────────────────────────────── */
 .frac {
   display: inline-flex;
