@@ -160,25 +160,48 @@ const LESSON_BANK = {
 <p>A percentage is a fraction out of 100. The most efficient method for percentage calculations is using a <strong>multiplier</strong>.</p>
 
 <h4>Key Multipliers</h4>
-<div class="formula">Increase by r%: multiply by (1 + r/100)
-Decrease by r%: multiply by (1 − r/100)</div>
+<div class="formula">Increase by r%:&nbsp; multiply by (1 + <span class="frac"><span class="num">r</span><span class="den">100</span></span>)<br>Decrease by r%:&nbsp; multiply by (1 − <span class="frac"><span class="num">r</span><span class="den">100</span></span>)</div>
 
 <h4>Finding a Percentage of an Amount</h4>
-<p>Convert the percentage to a decimal and multiply: 35% of 240 = 0.35 × 240 = 84.</p>
+<p>Work out 35% of 240.</p>
+<div class="formula">35% of 240 = 0.35 × 240 = <strong>84</strong></div>
+<div class="worked-steps">
+  <div class="ws-step"><span class="ws-num">1</span><span>Convert the percentage to a decimal: 35% = <span class="frac"><span class="num">35</span><span class="den">100</span></span> = <strong>0.35</strong></span></div>
+  <div class="ws-step"><span class="ws-num">2</span><span>Multiply by the amount: 0.35 × 240 = <strong>84</strong></span></div>
+</div>
+<div class="ws-answer">Answer: 84</div>
 
 <h4>Reverse Percentages</h4>
 <ol>
   <li>Identify the multiplier used (e.g. after 20% decrease, multiplier = 0.8).</li>
   <li>Divide by the multiplier to find the original.</li>
 </ol>
-<div class="formula">Sale price £68 after 20% off → £68 ÷ 0.8 = £85 original</div>
+<div class="formula">Sale price £68 after 20% off &rarr; £68 &divide; 0.8 = £85 original</div>
+<div class="worked-steps">
+  <div class="ws-step"><span class="ws-num">1</span><span>A 20% decrease means the original was multiplied by 0.8 (because 1 − 0.20 = <strong>0.80</strong>)</span></div>
+  <div class="ws-step"><span class="ws-num">2</span><span>To undo a ×0.8, divide by 0.8: £68 ÷ 0.8</span></div>
+  <div class="ws-step"><span class="ws-num">3</span><span>Remove the decimal — multiply both by 10: 680 ÷ 8 = <strong>85</strong></span></div>
+  <div class="ws-step"><span class="ws-num">4</span><span>Check: £85 × 0.8 = £68 ✓</span></div>
+</div>
+<div class="ws-answer">Answer: £85 original price</div>
 
 <h4>Percentage Change</h4>
-<div class="formula">% change = (change ÷ original) × 100</div>
+<div class="formula">% change = <span class="frac"><span class="num">change</span><span class="den">original</span></span> × 100</div>
+<div class="worked-steps">
+  <div class="ws-step"><span class="ws-num">1</span><span><strong>Change</strong> = new value − original value (use the absolute difference, not a negative)</span></div>
+  <div class="ws-step"><span class="ws-num">2</span><span>Divide the change by the <strong>original</strong> value (not the new value)</span></div>
+  <div class="ws-step"><span class="ws-num">3</span><span>Multiply by 100 to convert to a percentage. If the value went down, it is a percentage <em>decrease</em>.</span></div>
+</div>
 
-<h4>Worked Example</h4>
+<h4>Worked Example — Percentage Decrease</h4>
 <p>A jacket costs £120. It is reduced by 15% in a sale. Work out the sale price.</p>
-<p>Multiplier = 1 − 0.15 = 0.85. Sale price = £120 × 0.85 = <strong>£102</strong>.</p>
+<div class="worked-steps">
+  <div class="ws-step"><span class="ws-num">1</span><span>A 15% <em>decrease</em> → multiplier = 1 − 0.15 = <strong>0.85</strong></span></div>
+  <div class="ws-step"><span class="ws-num">2</span><span>Multiply the original price by the multiplier: £120 × 0.85</span></div>
+  <div class="ws-step"><span class="ws-num">3</span><span>Split to make it easier: £120 × 0.8 = £96, and £120 × 0.05 = £6</span></div>
+  <div class="ws-step"><span class="ws-num">4</span><span>Add the two parts: £96 + £6 = <strong>£102</strong></span></div>
+</div>
+<div class="ws-answer">Answer: £102</div>
 
 <div class="tip"><strong>AQA Exam Tip:</strong> For reverse percentages, never subtract the percentage from the sale/reduced price — always divide by the multiplier. This is the most common mistake on AQA papers.</div>`,
 
