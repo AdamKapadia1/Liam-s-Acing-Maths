@@ -43,6 +43,30 @@ const QUESTION_BANK = {
       answer: '28 × 5 = 140; three decimal places total → 0.140 = 0.14',
       hints: ['Multiply 28 × 5 first', 'Count total decimal places: 2 + 1 = 3, so divide 140 by 1000']
     },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'Work out 1456 ÷ 14 without a calculator. Show your working. [3 marks]',
+      answer: '14 × 100 = 1400, remainder 56. 56 ÷ 14 = 4. Answer: 104.',
+      hints: ['Use short division or chunking', '14 × 100 = 1400, leaving a remainder of 56']
+    },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'Work out (−3)³ + 5² × 2 without a calculator. Show your working. [3 marks]',
+      answer: '(−3)³ = −27; 5² × 2 = 25 × 2 = 50; −27 + 50 = 23',
+      hints: ['Apply BIDMAS: powers first, then multiply, then add', '(−3)³ = −3 × −3 × −3 = −27']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'Without a calculator, work out 4.56 ÷ 0.12. Show all your working. [4 marks]',
+      answer: 'Multiply both by 100: 456 ÷ 12 = 38',
+      hints: ['Multiply both numbers by 100 to remove decimals', '456 ÷ 12: 12 × 38 = 456']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'Work out 15% of 360 added to 2/5 of 250, without a calculator. [4 marks]',
+      answer: '15% of 360 = 54 (10% = 36, 5% = 18, total 54). 2/5 of 250 = 100. 54 + 100 = 154.',
+      hints: ['Find each part separately', '15% = 10% + 5%']
+    },
   ],
 
   'Integers & Decimals': [
@@ -82,6 +106,30 @@ const QUESTION_BANK = {
       answer: '9 − (−8) = 9 + 8 = 17',
       hints: ['(−3)² = 9', '4 × (−2) = −8, so subtracting −8 means adding 8']
     },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'Write 0.36̄ (0.3666…) as a fraction in its simplest form. [3 marks]',
+      answer: 'Let x = 0.3666… 10x = 3.666…; 100x = 36.666…; 90x = 33; x = 33/90 = 11/30.',
+      hints: ['Multiply by 10 and 100 then subtract to remove the recurring part', '100x − 10x = 90x = 33']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'Show that 0.2̄7̄ = 3/11. [4 marks]',
+      answer: 'Let x = 0.272727… 100x = 27.272727…; 100x − x = 27; 99x = 27; x = 27/99 = 3/11 ✓',
+      hints: ['Multiply by 100 to shift two repeating digits', 'Subtract x from 100x to eliminate the recurring part']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'Without a calculator, work out (−2.5)² + √0.04. [4 marks]',
+      answer: '(−2.5)² = 6.25; √0.04 = 0.2; 6.25 + 0.2 = 6.45',
+      hints: ['(−2.5)² = 2.5 × 2.5 = 6.25', '√0.04 = √(4/100) = 2/10 = 0.2']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'Without a calculator, work out 5.4 × 10⁻² + 6 × 10⁻³. Give your answer as a decimal. [4 marks]',
+      answer: '0.054 + 0.006 = 0.060 = 0.06',
+      hints: ['Convert each to an ordinary number first', '5.4 × 10⁻² = 0.054 and 6 × 10⁻³ = 0.006']
+    },
   ],
 
   'Fractions': [
@@ -114,6 +162,36 @@ const QUESTION_BANK = {
       question: 'Show that 1¹/₅ × 2¹/₂ − ³/₄ = 2¹/₄. [4 marks]',
       answer: '6/5 × 5/2 = 30/10 = 3. Then 3 − 3/4 = 12/4 − 3/4 = 9/4 = 2¼. ✓',
       hints: ['Start with the multiplication: 6/5 × 5/2', 'The 5s cancel to give 6/2 = 3']
+    },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Write 18/24 in its simplest form. [2 marks]',
+      answer: 'HCF of 18 and 24 is 6. 18 ÷ 6 = 3, 24 ÷ 6 = 4. Answer: 3/4.',
+      hints: ['Find the highest common factor (HCF) of 18 and 24', 'Divide both numerator and denominator by the HCF']
+    },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Work out 2/3 + 3/5. Give your answer as a mixed number. [2 marks]',
+      answer: 'LCM of 3 and 5 is 15. 10/15 + 9/15 = 19/15 = 1 4/15.',
+      hints: ['Find the lowest common multiple of 3 and 5', '2/3 = 10/15 and 3/5 = 9/15']
+    },
+    {
+      difficulty: 'Grade 4', diffKey: 'grade4', marks: 2,
+      question: 'Work out 3/7 × 14/9. Give your answer in its simplest form. [2 marks]',
+      answer: 'Cancel first: 3 and 9 share factor 3; 7 and 14 share factor 7. Gives 1/1 × 2/3 = 2/3.',
+      hints: ['Look for common factors to cancel before multiplying', '3 cancels with 9, and 7 cancels with 14']
+    },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'Work out 1 1/3 ÷ 2 2/5. Give your answer as a fraction in its simplest form. [3 marks]',
+      answer: '4/3 ÷ 12/5 = 4/3 × 5/12 = 20/36 = 5/9.',
+      hints: ['Convert mixed numbers to improper fractions first', 'Flip the second fraction and multiply']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'Work out (2/3 + 1/4) ÷ (1/3 − 1/6). Give your answer as a mixed number. [4 marks]',
+      answer: '2/3 + 1/4 = 8/12 + 3/12 = 11/12. 1/3 − 1/6 = 2/6 − 1/6 = 1/6. 11/12 ÷ 1/6 = 11/12 × 6 = 66/12 = 5 1/2.',
+      hints: ['Simplify the numerator and denominator of the big fraction separately', '11/12 ÷ 1/6 means 11/12 × 6']
     },
   ],
 
@@ -148,6 +226,36 @@ const QUESTION_BANK = {
       answer: '£20,000 × 1.08 × 0.95 = £20,520',
       hints: ['Apply each percentage change one at a time', '× 1.08 for the increase, then × 0.95 for the decrease']
     },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Decrease £380 by 30%. [2 marks]',
+      answer: '£380 × 0.70 = £266',
+      hints: ['A 30% decrease means you keep 70% of the original', 'Multiply by 0.70']
+    },
+    {
+      difficulty: 'Grade 4', diffKey: 'grade4', marks: 3,
+      question: 'After a 12% pay rise, Jake earns £2,576 per month. Work out his monthly pay before the rise. [3 marks]',
+      answer: '£2,576 ÷ 1.12 = £2,300',
+      hints: ['A 12% increase means the new pay is 112% of the original', 'Divide by 1.12 to reverse the increase']
+    },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'A television is advertised at £540 after a 25% reduction. Work out the original price. [3 marks]',
+      answer: '£540 ÷ 0.75 = £720',
+      hints: ['A 25% reduction means the sale price is 75% of the original', 'Divide by 0.75']
+    },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'A shop buys an item for £48 and sells it for £66. Work out the percentage profit. [3 marks]',
+      answer: 'Profit = £18. Percentage profit = (18 ÷ 48) × 100 = 37.5%.',
+      hints: ['Percentage profit = (profit ÷ original cost) × 100', 'Profit = selling price − cost price = £66 − £48 = £18']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'In three years, a house value increased by 5%, then 8%, then decreased by 3%. The house was initially worth £200,000. Work out its final value. [4 marks]',
+      answer: '£200,000 × 1.05 × 1.08 × 0.97 = £219,564.',
+      hints: ['Apply each multiplier in sequence', '× 1.05, then × 1.08, then × 0.97']
+    },
   ],
 
   'Powers & Roots': [
@@ -180,6 +288,36 @@ const QUESTION_BANK = {
       question: 'Simplify (8x⁶)^(2/3). [3 marks]',
       answer: '8^(2/3) × x⁴ = 4x⁴',
       hints: ['Apply the power to both 8 and x⁶ separately', '8^(2/3) = (³√8)² = 2² = 4']
+    },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Work out 3⁴. [2 marks]',
+      answer: '3 × 3 × 3 × 3 = 81',
+      hints: ['3⁴ means 3 multiplied by itself 4 times', '3 × 3 = 9, then 9 × 3 = 27, then 27 × 3 = 81']
+    },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Work out ³√125. [2 marks]',
+      answer: '5 (because 5 × 5 × 5 = 125)',
+      hints: ['The cube root is the number that, cubed, gives 125', '5³ = 125']
+    },
+    {
+      difficulty: 'Grade 4', diffKey: 'grade4', marks: 2,
+      question: 'Work out 64^(1/2). [2 marks]',
+      answer: '√64 = 8',
+      hints: ['A power of 1/2 means square root', '√64 = 8 because 8² = 64']
+    },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'Work out 16^(3/4). [3 marks]',
+      answer: '(⁴√16)³ = 2³ = 8',
+      hints: ['The denominator (4) gives the root, the numerator (3) gives the power', '⁴√16 = 2, then 2³ = 8']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'Work out 125^(−2/3). Give your answer as a fraction. [4 marks]',
+      answer: '(³√125)^(−2) = 5^(−2) = 1/25',
+      hints: ['First find 125^(2/3) = (³√125)² = 5² = 25', 'The negative power means take the reciprocal: 1/25']
     },
   ],
 
@@ -214,6 +352,36 @@ const QUESTION_BANK = {
       answer: '54 × 10⁴ + 8 × 10⁴ = 62 × 10⁴ = 6.2 × 10⁵',
       hints: ['Make both powers the same before adding', '5.4 × 10⁵ = 54 × 10⁴']
     },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 1,
+      question: 'Write 5,800,000 in standard form. [1 mark]',
+      answer: '5.8 × 10⁶',
+      hints: ['Move the decimal point to get a number between 1 and 10', 'Count how many places the decimal moved']
+    },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 1,
+      question: 'Write 4.2 × 10⁻⁴ as an ordinary number. [1 mark]',
+      answer: '0.00042',
+      hints: ['A negative power means the number is less than 1', 'Move the decimal point 4 places to the left']
+    },
+    {
+      difficulty: 'Grade 4', diffKey: 'grade4', marks: 2,
+      question: 'Work out (8 × 10⁷) ÷ (4 × 10³). Give your answer in standard form. [2 marks]',
+      answer: '(8 ÷ 4) × 10^(7−3) = 2 × 10⁴',
+      hints: ['Divide the numbers and subtract the powers', '8 ÷ 4 = 2 and 10⁷ ÷ 10³ = 10⁴']
+    },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'Work out (7 × 10³)². Give your answer in standard form. [3 marks]',
+      answer: '7² × 10⁶ = 49 × 10⁶ = 4.9 × 10⁷',
+      hints: ['Square both the 7 and the 10³ separately', '(10³)² = 10⁶, and 49 × 10⁶ must be rewritten']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'The mass of a proton is 1.67 × 10⁻²⁷ kg. The mass of an electron is 9.11 × 10⁻³¹ kg. How many times heavier is a proton than an electron? Give your answer in standard form to 3 s.f. [4 marks]',
+      answer: '(1.67 × 10⁻²⁷) ÷ (9.11 × 10⁻³¹) = (1.67 ÷ 9.11) × 10⁴ = 0.1833 × 10⁴ = 1.83 × 10³',
+      hints: ['Divide the A values and subtract the powers', '1.67 ÷ 9.11 = 0.1833…; adjust to standard form']
+    },
   ],
 
   'Factors, Multiples & Primes': [
@@ -246,6 +414,36 @@ const QUESTION_BANK = {
       question: 'Two buses leave the station at the same time. Bus A leaves every 12 minutes. Bus B leaves every 20 minutes. How many minutes until they both leave at the same time again? [2 marks]',
       answer: 'LCM(12, 20) = 60 minutes',
       hints: ['You need the LCM of 12 and 20', '12 = 2² × 3, 20 = 2² × 5, LCM = 2² × 3 × 5 = 60']
+    },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Find the HCF of 18 and 30. [2 marks]',
+      answer: 'Factors of 18: 1,2,3,6,9,18. Factors of 30: 1,2,3,5,6,10,15,30. HCF = 6.',
+      hints: ['List all factors of both numbers', 'Find the largest number that appears in both lists']
+    },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Write 84 as a product of its prime factors. [2 marks]',
+      answer: '84 = 2 × 42 = 2 × 2 × 21 = 2 × 2 × 3 × 7 = 2² × 3 × 7',
+      hints: ['Start by dividing by the smallest prime: 84 ÷ 2 = 42', 'Keep dividing until all factors are prime']
+    },
+    {
+      difficulty: 'Grade 4', diffKey: 'grade4', marks: 3,
+      question: 'Find the LCM of 18 and 24 using prime factor decomposition. [3 marks]',
+      answer: '18 = 2 × 3², 24 = 2³ × 3. LCM = 2³ × 3² = 72.',
+      hints: ['Write both numbers as products of prime factors', 'For LCM, take the highest power of each prime factor']
+    },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'A = 2² × 3 × 5 and B = 2 × 3² × 7. Find the HCF and LCM of A and B. [3 marks]',
+      answer: 'HCF = 2 × 3 = 6. LCM = 2² × 3² × 5 × 7 = 1260.',
+      hints: ['For HCF: take the lowest power of each shared prime factor', 'For LCM: take the highest power of each prime factor that appears']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'The HCF of two numbers is 6 and their LCM is 120. One of the numbers is 24. Find the other number. [4 marks]',
+      answer: 'Product of two numbers = HCF × LCM = 6 × 120 = 720. Other number = 720 ÷ 24 = 30.',
+      hints: ['Use the rule: HCF × LCM = product of the two numbers', 'So the other number = (HCF × LCM) ÷ 24']
     },
   ],
 
@@ -280,6 +478,36 @@ const QUESTION_BANK = {
       answer: 'Upper bound of p = 8.35, lower bound of q = 2.55. Upper bound of p/q = 8.35/2.55 = 3.27 (3 s.f.)',
       hints: ['To maximise p/q, use the upper bound of p and the lower bound of q', 'Upper p = 8.35, lower q = 2.55']
     },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Round 57,348 to the nearest thousand. [2 marks]',
+      answer: '57,000',
+      hints: ['Look at the hundreds digit (3)', 'Since 3 < 5, round down']
+    },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Round 0.08462 to 3 significant figures. [2 marks]',
+      answer: '0.0846',
+      hints: ['Significant figures start at the first non-zero digit', 'The first three significant figures are 8, 4, 6 — the next digit is 2, so round down']
+    },
+    {
+      difficulty: 'Grade 4', diffKey: 'grade4', marks: 3,
+      question: 'A speed is measured as 34 m/s correct to the nearest whole number. A distance is 200 m, correct to the nearest 10 m. Find the lower bound for the time taken (time = distance ÷ speed). [3 marks]',
+      answer: 'Lower bound for time = lower bound of distance ÷ upper bound of speed = 195 ÷ 34.5 = 5.65… s',
+      hints: ['Lower bound of time = lower distance ÷ upper speed', 'Lower bound of distance = 195 m, upper bound of speed = 34.5 m/s']
+    },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'The length of a side of a square is 7.4 cm, correct to 1 decimal place. Find the lower and upper bounds for the perimeter. [3 marks]',
+      answer: 'Lower bound of side = 7.35 cm → perimeter lower = 4 × 7.35 = 29.4 cm. Upper = 4 × 7.45 = 29.8 cm.',
+      hints: ['Find the bounds for one side first', 'Then multiply by 4 for the perimeter']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'x = 6.2 and y = 3.8, both correct to 1 d.p. Work out the upper bound of x² − y. Give your answer to 3 s.f. [4 marks]',
+      answer: 'Upper bound of x² − y: use upper x and lower y. (6.25)² − 3.75 = 39.0625 − 3.75 = 35.3125 ≈ 35.3.',
+      hints: ['To maximise x² − y, use the upper bound of x and the lower bound of y', 'Upper x = 6.25, lower y = 3.75']
+    },
   ],
 
   'Indices & Surds': [
@@ -312,6 +540,36 @@ const QUESTION_BANK = {
       question: 'Rationalise the denominator of 6/(2 + √2). Give your answer in the form a + b√2. [3 marks]',
       answer: '6(2−√2)/((2+√2)(2−√2)) = 6(2−√2)/(4−2) = 6(2−√2)/2 = 3(2−√2) = 6 − 3√2',
       hints: ['Multiply top and bottom by (2 − √2)', '(2+√2)(2−√2) = 4 − 2 = 2']
+    },
+    {
+      difficulty: 'Foundation (Grade 3–4)', diffKey: 'foundation', marks: 2,
+      question: 'Simplify x⁵ ÷ x². [2 marks]',
+      answer: 'x³',
+      hints: ['When dividing powers with the same base, subtract the indices', '5 − 2 = 3']
+    },
+    {
+      difficulty: 'Grade 4', diffKey: 'grade4', marks: 2,
+      question: 'Simplify √75. [2 marks]',
+      answer: '√(25 × 3) = 5√3',
+      hints: ['Find the largest square factor of 75', '75 = 25 × 3, and √25 = 5']
+    },
+    {
+      difficulty: 'Grade 4', diffKey: 'grade4', marks: 2,
+      question: 'Simplify √12 + √27. [2 marks]',
+      answer: '2√3 + 3√3 = 5√3',
+      hints: ['Simplify each surd first', '√12 = 2√3 and √27 = 3√3']
+    },
+    {
+      difficulty: 'Grade 5', diffKey: 'grade5', marks: 3,
+      question: 'Expand and simplify (2 + √3)². [3 marks]',
+      answer: '(2 + √3)² = 4 + 2×2×√3 + 3 = 7 + 4√3',
+      hints: ['Use (a + b)² = a² + 2ab + b²', '(√3)² = 3']
+    },
+    {
+      difficulty: 'Grade 6', diffKey: 'grade6', marks: 4,
+      question: 'Rationalise the denominator of (3 + √5)/(√5 − 1). Give your answer in the form a + b√5. [4 marks]',
+      answer: '(3+√5)(√5+1)/((√5−1)(√5+1)) = (3√5+3+5+√5)/(5−1) = (4√5+8)/4 = 2 + √5',
+      hints: ['Multiply top and bottom by (√5 + 1)', '(√5−1)(√5+1) = 5 − 1 = 4']
     },
   ],
 
