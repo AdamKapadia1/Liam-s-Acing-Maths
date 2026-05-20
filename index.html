@@ -110,6 +110,9 @@
       <button class="topic-btn" onclick="showProgress()">
         <span class="icon">📊</span> My Progress
       </button>
+      <button class="topic-btn" onclick="showWorksheets()">
+        <span class="icon">📄</span> Worksheets
+      </button>
     </div>
   </aside>
 
@@ -432,6 +435,81 @@
       <div id="pg-categories"></div>
     </div>
 
+    <!-- WORKSHEETS SCREEN -->
+    <div class="content-screen" id="worksheets-screen" style="display:none">
+      <h2 class="ws-page-title">📄 Worksheets</h2>
+      <p class="ws-page-sub">Choose a topic and generate a printable 10-question worksheet with a built-in timer and full mark scheme.</p>
+
+      <div class="ws-controls no-print">
+
+        <!-- Topic selector -->
+        <div class="ws-control-group">
+          <label class="ws-control-label" for="ws-topic-select">Topic</label>
+          <select class="ws-select" id="ws-topic-select">
+            <option value="">— Select a topic —</option>
+            <optgroup label="Number">
+              <option value="Four Operations">Four Operations</option>
+              <option value="Integers &amp; Decimals">Integers &amp; Decimals</option>
+              <option value="Fractions">Fractions</option>
+              <option value="Percentages">Percentages</option>
+              <option value="Powers &amp; Roots">Powers &amp; Roots</option>
+              <option value="Standard Form">Standard Form</option>
+              <option value="Factors, Multiples &amp; Primes">Factors, Multiples &amp; Primes</option>
+              <option value="Rounding &amp; Bounds">Rounding &amp; Bounds</option>
+              <option value="Indices &amp; Surds">Indices &amp; Surds</option>
+            </optgroup>
+            <optgroup label="Algebra">
+              <option value="Simplifying &amp; Expanding">Simplifying &amp; Expanding</option>
+              <option value="Factorising">Factorising</option>
+              <option value="Solving Linear Equations">Solving Linear Equations</option>
+              <option value="Straight-Line Graphs">Straight-Line Graphs</option>
+              <option value="Quadratic Equations">Quadratic Equations</option>
+              <option value="Simultaneous Equations">Simultaneous Equations</option>
+              <option value="Sequences">Sequences</option>
+              <option value="Inequalities">Inequalities</option>
+            </optgroup>
+            <optgroup label="Ratio &amp; Proportion">
+              <option value="Ratio">Ratio</option>
+              <option value="Direct &amp; Inverse Proportion">Direct &amp; Inverse Proportion</option>
+              <option value="Speed, Distance &amp; Time">Speed, Distance &amp; Time</option>
+              <option value="Compound Interest &amp; Growth">Compound Interest &amp; Growth</option>
+            </optgroup>
+            <optgroup label="Geometry &amp; Measures">
+              <option value="Angle Rules">Angle Rules</option>
+              <option value="Area &amp; Perimeter">Area &amp; Perimeter</option>
+              <option value="Circles">Circles</option>
+              <option value="Volume &amp; Surface Area">Volume &amp; Surface Area</option>
+              <option value="Pythagoras Theorem">Pythagoras Theorem</option>
+              <option value="Trigonometry">Trigonometry</option>
+              <option value="Transformations">Transformations</option>
+              <option value="Similarity &amp; Congruence">Similarity &amp; Congruence</option>
+            </optgroup>
+            <optgroup label="Statistics &amp; Probability">
+              <option value="Averages &amp; Range">Averages &amp; Range</option>
+              <option value="Charts &amp; Graphs">Charts &amp; Graphs</option>
+              <option value="Scatter Graphs">Scatter Graphs</option>
+              <option value="Probability">Probability</option>
+              <option value="Tree Diagrams">Tree Diagrams</option>
+              <option value="Cumulative Frequency &amp; Box Plots">Cumulative Frequency &amp; Box Plots</option>
+            </optgroup>
+          </select>
+          <button class="ws-gen-btn" onclick="generateWorksheet()">Generate Worksheet</button>
+        </div>
+
+        <!-- Worksheet timer -->
+        <div class="pomo-wrap ws-timer-wrap" id="ws-timer-wrap">
+          <span class="ws-timer-label">Worksheet Timer</span>
+          <span class="pomo-time" id="ws-timer-time">25:00</span>
+          <button class="pomo-btn" id="ws-timer-btn" onclick="wsTimerToggle()">Start</button>
+          <button class="pomo-reset" onclick="wsTimerReset()">↺</button>
+        </div>
+
+      </div>
+
+      <!-- Generated worksheet appears here -->
+      <div id="ws-output" style="display:none"></div>
+    </div>
+
   </main>
 </div>
 
@@ -442,5 +520,6 @@
 <script src="js/formulas.js"></script>
 <script src="js/api.js"></script>
 <script src="js/app.js"></script>
+<script src="js/worksheets.js"></script>
 </body>
 </html>
